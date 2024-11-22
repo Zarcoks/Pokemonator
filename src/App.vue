@@ -1,12 +1,13 @@
 <script setup lang="ts">
-
-import Perso from "@/components/perso.vue";
+    import toolbar from './components/toolbar.vue';
+    import Personnage from './components/Personnage.vue';
 </script>
 
 <template>
-<perso></perso>
+    <toolbar/>
+    <Personnage/>
 </template>
 
 <style scoped>
-
+    
 </style>
