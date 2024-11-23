@@ -64,4 +64,9 @@
     .grised {
         background-color: rgb(105, 105, 105);
     }
+
+    article:hover {
+        background-color: rgb(252, 252, 252);
+        transition: all 200ms ease-out;
+    }
 </style>
