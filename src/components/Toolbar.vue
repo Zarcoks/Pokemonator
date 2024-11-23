@@ -5,12 +5,13 @@
 <template>
     <header>
         <a href="/">
-            <h1>POKEMONATOR</h1>
+            POKEMONATOR
         </a>
     </header>
 </template>
 
 <style scoped>
+    @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
     header {
         display: flex;
         align-items: center;
@@ -25,5 +26,7 @@
         justify-content: center;
         border-radius: 10px;
         color: white;
+        font-family: 'Pokemon Solid', sans-serif;
+        font-size: x-large;
     }
 </style>
