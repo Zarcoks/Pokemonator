@@ -9,7 +9,9 @@
 <template>
     <toolbar/>
     <main>
-        <Personnage/>
+        <Personnage>
+            Une question pas spécialement intéressant mais particulièrement longueur pour tester le style
+        </Personnage>
         <LivePokemons/>
     </main>
 </template>
@@ -18,7 +20,7 @@
     main {
         width: 80%;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
         margin: auto;
     }

@@ -1,12 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    const sprites = [
-        new URL('@/assets/sprites/welcome.png', import.meta.url).href,
-        new URL('@/assets/sprites/found.png', import.meta.url).href,
-        new URL('@/assets/sprites/brain.png', import.meta.url).href,
-        new URL('@/assets/sprites/okay.png', import.meta.url).href
-    ];
-    let currentImage = ref(sprites[0])    
+    const currentImage = new URL('@/assets/chen-akinator.png', import.meta.url).href;
 </script>
 
 <template>
@@ -14,9 +8,7 @@
         <img :src="currentImage" alt="spriteImage"/>
         <div>
             <div id="question">
-                <p>
-                    La question qui est un peu plus longue que celle prévue
-                </p>
+                <p><slot></slot></p>
             </div>
             <div id="buttons">
                 <button>Oui</button>
@@ -29,14 +21,16 @@
 
 <style scoped>
     img {
-        width: 40%;
+        max-width: 300px;
         background-color: dark;
-        width: 200px;
-        height: 500px;
+        margin: 10px
     }
 
     #wrapper {
         display: flex;
+        align-items: center;
+        height: 100%;
+        margin-right: 10%;
     }
 
     #wrapper > div {
