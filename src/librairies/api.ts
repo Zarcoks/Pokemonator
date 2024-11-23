@@ -6,6 +6,15 @@ export async function getPokemon(nameOrIndex: string | number){
     const data = await reponse.json();
     console.log(data)
 
+    const pokemon = await convertData(data);
+    console.log(pokemon);
+    return pokemon;
+}
+//pour chaque pokemon transformer donnée API en donnée que ilan a besoin
+// pour ça : fonction qui prend en paramètre l'id ou nom du pokemon et chope toute les données
+// transformer l'apelle à l'api pour chaque pokemon formater les données utile en 1 objet json qui est enregistré dans un fichier pour être utiliser après dans d'autres requettes
+
+async function convertData(data:any) {
     // requette de préparation pour aller chercher les infos dans species avec l'url donné
     const  reqSpecies = await fetch (data.species.url);
     const Species = await reqSpecies.json();
@@ -13,7 +22,7 @@ export async function getPokemon(nameOrIndex: string | number){
     // requette de la chaine d'évolution du pokemon
     const  reqEvolution = await fetch (Species.evolution_chain.url);
     const evolution = await reqEvolution.json();
-
+        
     // Selection dans l'objet json des données que nous avons besoin
     const pokemon = {
 
@@ -40,8 +49,5 @@ export async function getPokemon(nameOrIndex: string | number){
 
        // evolution : evolution.chain.evolution_details,
     }
-    console.log(pokemon);
+    return pokemon;
 }
-//pour chaque pokemon transformer donnée API en donnée que ilan a besoin
-// pour ça : fonction qui prend en paramètre l'id ou nom du pokemon et chope toute les données
-// transformer l'apelle à l'api pour chaque pokemon formater les données utile en 1 objet json qui est enregistré dans un fichier pour être utiliser après dans d'autres requettes
