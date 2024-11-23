@@ -19,6 +19,7 @@
         width: 80%;
         display: flex;
         justify-content: space-evenly;
+        align-items: center;
         margin: auto;
     }
 </style>

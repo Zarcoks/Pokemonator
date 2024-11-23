@@ -13,14 +13,16 @@
     <div id="wrapper">
         <img :src="currentImage" alt="spriteImage"/>
         <div>
-            <p>
-                La question
-            </p>
-            <ul>
-                <li>Une réponse</li>
-                <li>Une 2e réponse</li>
-                <li>Une 3e réponse</li>
-            </ul>
+            <div id="question">
+                <p>
+                    La question qui est un peu plus longue que celle prévue
+                </p>
+            </div>
+            <div id="buttons">
+                <button>Oui</button>
+                <button>Non</button>
+                <button>Je ne sais pas</button>
+            </div>
         </div>
     </div>
 </template>
@@ -43,4 +45,10 @@
         justify-content: center;
     }
     
+    #buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 150px;
+    }    
 </style>

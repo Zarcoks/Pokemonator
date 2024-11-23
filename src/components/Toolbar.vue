@@ -5,7 +5,7 @@
 <template>
     <header>
         <a href="/">
-            <h1>ACCUEIL</h1>
+            <h1>POKEMONATOR</h1>
         </a>
     </header>
 </template>
