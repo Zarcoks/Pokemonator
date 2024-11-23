@@ -22,7 +22,6 @@
 <style scoped>
     img {
         max-width: 300px;
-        background-color: dark;
         margin: 10px
     }
 
