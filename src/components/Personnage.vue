@@ -1,35 +1,48 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    const sprites = [
-        new URL('@/assets/sprites/welcome.png', import.meta.url).href,
-        new URL('@/assets/sprites/found.png', import.meta.url).href,
-        new URL('@/assets/sprites/brain.png', import.meta.url).href,
-        new URL('@/assets/sprites/okay.png', import.meta.url).href
-    ];
-    let currentImage = ref(sprites[0])    
+    const currentImage = new URL('@/assets/chen-akinator.png', import.meta.url).href;
 </script>
 
 <template>
     <div id="wrapper">
         <img :src="currentImage" alt="spriteImage"/>
         <div>
-            <p>
-                La question
-            </p>
+            <div id="question">
+                <p><slot></slot></p>
+            </div>
+            <div id="buttons">
+                <button>Oui</button>
+                <button>Non</button>
+                <button>Je ne sais pas</button>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
     img {
-        width: 40%;
+        max-width: 300px;
+        background-color: dark;
+        margin: 10px
     }
 
     #wrapper {
         display: flex;
+        align-items: center;
+        height: 100%;
+        margin-right: 10%;
     }
 
     #wrapper > div {
-        background-color: azure;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
+    
+    #buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 150px;
+    }    
 </style>
