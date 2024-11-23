@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  background-image: url('../assets/wp4359887.jpg');
+  background-color: white;
   background-size: cover; /* Ajuste l'image pour couvrir tout l'écran */
   background-position: center; /* Centre l'image */
   background-repeat: no-repeat; /* Empêche la répétition */
