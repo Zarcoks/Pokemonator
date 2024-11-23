@@ -1,8 +1,4 @@
 body {
   min-height: 100vh;
-  background-color: white;
-  background-size: cover; /* Ajuste l'image pour couvrir tout l'écran */
-  background-position: center; /* Centre l'image */
-  background-repeat: no-repeat; /* Empêche la répétition */
-  margin: 0; /* Supprime les marges pour couvrir l'écran entier */
+  margin: 0;
 }

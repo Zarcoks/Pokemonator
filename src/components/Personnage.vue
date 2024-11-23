@@ -16,6 +16,11 @@
             <p>
                 La question
             </p>
+            <ul>
+                <li>Une réponse</li>
+                <li>Une 2e réponse</li>
+                <li>Une 3e réponse</li>
+            </ul>
         </div>
     </div>
 </template>
@@ -23,6 +28,9 @@
 <style scoped>
     img {
         width: 40%;
+        background-color: dark;
+        width: 200px;
+        height: 500px;
     }
 
     #wrapper {
@@ -30,6 +38,9 @@
     }
 
     #wrapper > div {
-        background-color: azure;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
+    
 </style>
