@@ -9,4 +9,5 @@ export async function listPokemon(){
     }
 
     console.log('liste des pokemon', listPokemon);
+    return listPokemon;
 }

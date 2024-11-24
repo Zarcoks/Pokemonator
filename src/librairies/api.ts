@@ -113,5 +113,3 @@ export async function getPokemon(nameOrIndex: string | number){
         //console.log(pokemon);
     return pokemon;
 }
-
-// transformer l'apelle à l'api pour chaque pokemon formater les données utile en 1 objet json qui est enregistré dans un fichier pour être utiliser après dans d'autres requettes
