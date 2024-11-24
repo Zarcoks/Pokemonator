@@ -8,6 +8,9 @@
 
     let workingOnPokemons = ref(new Array<Pokemon>()); // La liste de tous les pokemons à modifier
     let impossiblePokemons = ref(new Array<Pokemon>()) // La liste des pokemons éliminés par les questions
+    // Variable pour activer / désactiver les boutons le temps que les données soient chargées
+    let isDataLoaded = ref(false)
+    let question = ref("Nous chargeons les données...") // La question loadé dynamiquement
 
     listPokemon().then((tab) => callback(tab)) // Requete à l'API pour la liste de pokemons
 
@@ -16,19 +19,20 @@
      * @param tabOfPokemons
      */
     function callback(tabOfPokemons:Pokemon[]) {
-        console.log(tabOfPokemons);
         workingOnPokemons.value = tabOfPokemons // Affecte les pokemons à la variable
+        isDataLoaded.value = true
+        question.value = "La question à poser..."
     }
 </script>
 
 <template>
     <toolbar/>
     <main>
-        <Personnage>
-            Une question pas spécialement intéressant mais particulièrement longueur pour tester le style
+        <Personnage :disable="!isDataLoaded">
+          {{ question }}
         </Personnage>
         <!-- Passage des variables au composant -->
-        <LivePokemons :pokemons="workingOnPokemons" :grised="impossiblePokemons"/>
+        <LivePokemons :isDataLoaded="isDataLoaded" :pokemons="workingOnPokemons" :grised="impossiblePokemons"/>
     </main>
 </template>
 
