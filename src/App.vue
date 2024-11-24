@@ -3,7 +3,7 @@
     import Personnage from './components/Personnage.vue';
     import LivePokemons from './components/LivePokemons.vue';
     import {getPokemon} from "@/librairies/api";
-    getPokemon(2)
+    getPokemon(25)
 </script>
 
 <template>

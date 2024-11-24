@@ -1,3 +1,57 @@
+//  fonction pour récupérer l'ordre de la chaîne d"évolution
+function getEvolutionNumber(chain, nomPokemon){
+    // pokemon de base
+    if (chain.species.name === nomPokemon){
+        return 1;
+    }
+    //1ere évolution
+    if (chain.evolves_to.flatMap(evo => evo.species.name).includes(nomPokemon)){
+        return 2;
+    }
+    //2ème évolution
+    if (chain.evolves_to.flatMap(evo => evo.evolves_to
+        .flatMap(evo2 => evo2.species.name)).includes(nomPokemon)){
+        return 3;
+    }
+}
+
+//fonction pour récupérer les conditions d'évolution d'un pokemon
+function getEvolutionTrigger(chain, numEvolution){
+    // 1ere evolution
+    if(numEvolution === 2){
+        return chain.evolves_to
+            .flatMap(evolution => evolution.evolution_details
+                .map(detail => detail.trigger.name))[0];
+    }
+    //2ere évolution
+    if(numEvolution === 3){
+        return chain.evolves_to
+            .flatMap(evolution => evolution.evolves_to
+                .flatMap(evo => evo.evolution_details
+                    .map(detail => detail.trigger.name)))[0];
+    }
+}
+
+function getEvolutionItem(chain, numEvolution){
+    //1ere évolution
+    if(numEvolution === 2 ){
+        const item = chain.evolves_to
+            .flatMap(evolution => evolution.evolution_details
+                .map(detail => detail.item?.name))[0]  // ? = si item est null empèche de faire une erreure
+        return item || null;
+    }
+    //2ere évolution
+    if(numEvolution === 3){
+        const item = chain.evolves_to
+            .flatMap(evolution => evolution.evolves_to
+                .flatMap(evo => evo.evolution_details
+                    .map(detail => detail.item?.name)))[0]
+        return item || null;
+    }
+    return null;
+}
+
+// création d'un pokemon avec les infos utiles pour les questions
 export async function getPokemon(nameOrIndex: string | number){
     // connection avec l'api pokémon avec la méthode Fetch (ne pas oublier le asynchrone)
     const reponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrIndex}`);
@@ -14,13 +68,19 @@ export async function getPokemon(nameOrIndex: string | number){
     const  reqEvolution = await fetch (Species.evolution_chain.url);
     const evolution = await reqEvolution.json();
 
-    // Selection dans l'objet json des données que nous avons besoin
+    // appelle des fonctions ci dessus
+    const nivEvolution = getEvolutionNumber(evolution.chain,data.name);
+    const evenement = getEvolutionTrigger(evolution.chain,nivEvolution);
+    const objetEvolution = getEvolutionItem(evolution.chain,nivEvolution);
+
+    // création en json du pokemon avec les données trié pour les questions
     const pokemon = {
 
         // renvoie un nombre
         pokedex : data.id,
         poids : data.weight,
         taille : data.height,
+        nivEvolution : nivEvolution,
 
         // renvoie une chaine de caractère
         nom: data.name,
@@ -28,20 +88,17 @@ export async function getPokemon(nameOrIndex: string | number){
         couleur : Species.color.name,
         habitat : Species.habitat.name,
         forme : Species.shape.name,
-        evenement: evolution.chain.evolves_to
-            .flatMap(evolution => evolution.evolution_details
-                    .map(detail => detail.trigger.name)).join(', '),
+        evenement: evenement,
         bebe : Species.is_baby,
         legendaire : Species.is_legendary,
         mythique : Species.is_mythical,
+        objetEvoltution : objetEvolution,
 
         //renvoie un lien
         image : data.sprites.front_default,
-
-       // evolution : evolution.chain.evolution_details,
     }
     console.log(pokemon);
+    return pokemon;
 }
-//pour chaque pokemon transformer donnée API en donnée que ilan a besoin
-// pour ça : fonction qui prend en paramètre l'id ou nom du pokemon et chope toute les données
+
 // transformer l'apelle à l'api pour chaque pokemon formater les données utile en 1 objet json qui est enregistré dans un fichier pour être utiliser après dans d'autres requettes
