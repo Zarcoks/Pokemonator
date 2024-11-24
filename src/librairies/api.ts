@@ -94,13 +94,10 @@ export async function getPokemon(nameOrIndex: string | number){
     // création en json du pokemon avec les données trié pour les questions
     const pokemon: Pokemon = {
 
-        // renvoie un nombre
         pokedex : data.id,
         poids : data.weight,
         taille : data.height,
         nivEvolution : nivEvolution,
-
-        // renvoie une chaine de caractère
         nom: data.name,
         type : data.types.map(typeObj => typeObj.type.name).join(', '), // type est un tableau donc on utilise la fonction map pour cherhcer dedans
         couleur : Species.color.name,
@@ -111,8 +108,6 @@ export async function getPokemon(nameOrIndex: string | number){
         legendaire : Species.is_legendary,
         mythique : Species.is_mythical,
         objetEvoltution : objetEvolution,
-
-        //renvoie un lien
         image : data.sprites.front_default,
     }
         //console.log(pokemon);
