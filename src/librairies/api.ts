@@ -1,5 +1,5 @@
 // object pokemon
-interface Pokemon {
+export interface Pokemon {
     pokedex: number; // Le numéro dans le Pokédex
     poids: number; // Poids en hectogrammes
     taille: number; // Taille en décimètres
