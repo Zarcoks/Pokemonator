@@ -2,8 +2,8 @@
     import toolbar from './components/Toolbar.vue';
     import Personnage from './components/Personnage.vue';
     import LivePokemons from './components/LivePokemons.vue';
-    import {getPokemon} from "@/librairies/api";
-    getPokemon(25)
+    import {listPokemon} from "@/librairies/listPokemon";
+    listPokemon()
 </script>
 
 <template>

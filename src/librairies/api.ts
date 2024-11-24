@@ -1,3 +1,21 @@
+// object pokemon
+interface Pokemon {
+    pokedex: number; // Le numéro dans le Pokédex
+    poids: number; // Poids en hectogrammes
+    taille: number; // Taille en décimètres
+    nivEvolution: number; // Niveau d'évolution (1, 2 ou 3)
+    nom: string; // Nom du Pokémon
+    type: string; // Types du Pokémon, séparés par des virgules
+    couleur: string; // Couleur principale
+    habitat: string; // Habitat naturel
+    forme: string; // Forme physique
+    evenement: string | null; // Condition d'évolution
+    bebe: boolean; // Indique si c'est un bébé Pokémon
+    legendaire: boolean; // Indique si c'est un Pokémon légendaire
+    mythique: boolean; // Indique si c'est un Pokémon mythique
+    objetEvoltution: string | null; // Objet nécessaire pour évoluer
+    image: string; // URL de l'image
+}
 //  fonction pour récupérer l'ordre de la chaîne d"évolution
 function getEvolutionNumber(chain, nomPokemon){
     // pokemon de base
@@ -51,14 +69,14 @@ function getEvolutionItem(chain, numEvolution){
     return null;
 }
 
-// création d'un pokemon avec les infos utiles pour les questions
+// création d'un pokemon avec les infos utiles pour les questions grâce à une API
 export async function getPokemon(nameOrIndex: string | number){
     // connection avec l'api pokémon avec la méthode Fetch (ne pas oublier le asynchrone)
     const reponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrIndex}`);
 
     // conversion de notre réponse à la requette en 1 objet json
     const data = await reponse.json();
-    console.log(data)
+    //console.log(data)
 
     // requette de préparation pour aller chercher les infos dans species avec l'url donné
     const  reqSpecies = await fetch (data.species.url);
@@ -74,7 +92,7 @@ export async function getPokemon(nameOrIndex: string | number){
     const objetEvolution = getEvolutionItem(evolution.chain,nivEvolution);
 
     // création en json du pokemon avec les données trié pour les questions
-    const pokemon = {
+    const pokemon: Pokemon = {
 
         // renvoie un nombre
         pokedex : data.id,
@@ -97,7 +115,7 @@ export async function getPokemon(nameOrIndex: string | number){
         //renvoie un lien
         image : data.sprites.front_default,
     }
-    console.log(pokemon);
+        //console.log(pokemon);
     return pokemon;
 }
 
