@@ -1,44 +1,47 @@
 <script setup lang="ts">
-    let data = [
-        {
-            name: "pikachu",
-            img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-        },
-        {
-            name: "aegislash",
-            img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-        },
-        {
-            name: "raichu",
-            img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
-        }
-    ]
-    let grisedPokemons = [
-        "raichu",
-        "pikachu"
-    ]
+import type {Pokemon} from "@/librairies/api";
 
-    function isGrised(pokemon:any) {
-        console.log(grisedPokemons.indexOf(pokemon.name));
-        return grisedPokemons.indexOf(pokemon.name) >= 0;
-    }
+  // Récupération et définition des variables utiles au fonctionnement du composant
+  const props = defineProps<{isDataLoaded: boolean, pokemons: Pokemon[], grised: Pokemon[]}>();
 
-    function trierGrised() {
-        return data.filter((pok) => !isGrised(pok)).concat(data.filter((pok) => isGrised(pok)));
-    }
+/**
+ * Détermine is un pokemon doit être grisé ou pas
+ * @param pokemon
+ */
+  function isGrised(pokemon:Pokemon) {
+      console.log(props.grised.indexOf(pokemon));
+      return props.grised.indexOf(pokemon) >= 0;
+  }
+
+  /**
+   * Retourne le tableau de TOUS les pokemons avec les non-grisés AVANT les grisés
+   */
+  function trierGrised() {
+    return props.pokemons.concat(props.grised);
+  }
 </script>
 
 <template>
-    <div>
+  <div id="pokemons">
+    <h2>Les pokemons auxquels je pense...</h2>
+    <div :class="{aligneGif: !isDataLoaded}">
         <article v-for="pok in trierGrised()" :class="{grised:(isGrised(pok))}">
-            <img :src="pok.img" alt="pik"/>
-            <span>{{ pok.name }}</span>
+            <img :src="pok.image" alt="pik"/>
+            <span>{{ pok.nom }}</span>
         </article>
+        <img :class="{hidden: props.isDataLoaded}" src="@/assets/loading.gif" alt="Loading..." />
     </div>
+  </div>
 </template>
 
 <style scoped>
-    div {
+    #pokemons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #pokemons > div {
         display: flex;
         flex-direction: column;
         overflow: scroll;
@@ -47,6 +50,11 @@
         background-color: lightgray;
         border-radius: 20px;
         border: solid 1px;
+    }
+
+    .aligneGif {
+      align-items: center;
+      justify-content: center;
     }
 
     img {
@@ -68,5 +76,9 @@
     article:hover {
         background-color: rgb(252, 252, 252);
         transition: all 200ms ease-out;
+    }
+
+    .hidden {
+      display: none;
     }
 </style>
