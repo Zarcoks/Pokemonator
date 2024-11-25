@@ -8,6 +8,8 @@
     "skipLibCheck": true
   },
 
+
+
   "Type": {
     "q" : "Ton Pokémon est-il de type ",
     "p" : 1,
