@@ -6,6 +6,7 @@
     import { ref } from 'vue';
     import type {Pokemon} from "@/librairies/api";
 
+
     let workingOnPokemons = ref(new Array<Pokemon>()); // La liste de tous les pokemons à modifier
     let impossiblePokemons = ref(new Array<Pokemon>()) // La liste des pokemons éliminés par les questions
     // Variable pour activer / désactiver les boutons le temps que les données soient chargées
