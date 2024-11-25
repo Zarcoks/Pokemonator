@@ -4,7 +4,7 @@ export interface Pokemon {
     poids: number; // Poids en hectogrammes
     taille: number; // Taille en décimètres
     nivEvolution: number; // Niveau d'évolution (1, 2 ou 3)
-    nom: string; // Nom du Pokémon
+    nom: string; // Nom du Pokémon en français
     type: string; // Types du Pokémon, séparés par des virgules
     couleur: string; // Couleur principale
     habitat: string; // Habitat naturel
@@ -121,7 +121,9 @@ export async function getPokemon(nameOrIndex: string | number){
         poids : data.weight,
         taille : data.height,
         nivEvolution : nivEvolution,
-        nom: data.name,
+        nom: Species.names.find((name: { name: string; language: { name: string } }) =>
+            name.language.name === "fr"
+        )?.name,
         type : data.types.map(typeObj => typeObj.type.name).join(', '), // type est un tableau donc on utilise la fonction map pour cherhcer dedans
         couleur : Species.color.name,
         habitat : Species.habitat.name,
