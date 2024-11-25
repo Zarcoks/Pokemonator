@@ -15,6 +15,7 @@ export interface Pokemon {
     mythique: boolean; // Indique si c'est un Pokémon mythique
     objetEvoltution: string | null; // Objet nécessaire pour évoluer
     image: string; // URL de l'image
+    nivEvolutionMin : number; // niveau minimal pour être évoluer
 }
 //  fonction pour récupérer l'ordre de la chaîne d"évolution
 function getEvolutionNumber(chain, nomPokemon){
@@ -50,6 +51,7 @@ function getEvolutionTrigger(chain, numEvolution){
     }
 }
 
+// retourne l'objet utiliser pour évoluer ou null si il y en a pas
 function getEvolutionItem(chain, numEvolution){
     //1ere évolution
     if(numEvolution === 2 ){
@@ -65,6 +67,26 @@ function getEvolutionItem(chain, numEvolution){
                 .flatMap(evo => evo.evolution_details
                     .map(detail => detail.item?.name)))[0]
         return item || null;
+    }
+    return null;
+}
+
+// récupère le niveau minimal pour l'évolution
+function getEvolutionlevelMin(chain, numEvolution){
+    //1ere évolution
+    if(numEvolution === 2 ){
+        const level = chain.evolves_to
+            .flatMap(evolution => evolution.evolution_details
+                .map(detail => detail.min_level))[0]
+        return level || null;
+    }
+    //2ere évolution
+    if(numEvolution === 3){
+        const level = chain.evolves_to
+            .flatMap(evolution => evolution.evolves_to
+                .flatMap(evo => evo.evolution_details
+                    .map(detail => detail.min_level)))[0]
+        return level || null;
     }
     return null;
 }
@@ -90,6 +112,7 @@ export async function getPokemon(nameOrIndex: string | number){
     const nivEvolution = getEvolutionNumber(evolution.chain,data.name);
     const evenement = getEvolutionTrigger(evolution.chain,nivEvolution);
     const objetEvolution = getEvolutionItem(evolution.chain,nivEvolution);
+    const nivEvolutionMin = getEvolutionlevelMin(evolution.chain,nivEvolution);
 
     // création en json du pokemon avec les données trié pour les questions
     const pokemon: Pokemon = {
@@ -109,6 +132,7 @@ export async function getPokemon(nameOrIndex: string | number){
         mythique : Species.is_mythical,
         objetEvoltution : objetEvolution,
         image : data.sprites.front_default,
+        nivEvolutionMin : nivEvolutionMin,
     }
         //console.log(pokemon);
     return pokemon;
