@@ -9,7 +9,6 @@ import type {Pokemon} from "@/librairies/api";
  * @param pokemon
  */
   function isGrised(pokemon:Pokemon) {
-      console.log(props.grised.indexOf(pokemon));
       return props.grised.indexOf(pokemon) >= 0;
   }
 
