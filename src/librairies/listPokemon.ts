@@ -1,5 +1,5 @@
 import {getPokemon} from "@/librairies/api";
-/*import { join } from 'path';
+import { join } from 'path';
 import {writeFileSync, existsSync} from 'fs';
 
 
@@ -25,7 +25,7 @@ export function saveListToFile(fileName: string, list: any[]): void {
         console.error('Erreur lors de la sauvegarde de la liste :', error);
     }
     }
-*/
+
 
 // fait la liste des 151 premier pokemon
 export async function listPokemon() {
