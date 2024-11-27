@@ -1,6 +1,21 @@
+interface innerConfig {
+    q: string,
+    p: number
+}
 
+interface TsConfig {
+    Type: innerConfig,
+    Evolution: innerConfig,
+    Poids: innerConfig,
+    Taille: innerConfig,
+    Couleur: innerConfig,
+    Rarete: innerConfig,
+    Lieu: innerConfig,
+    Espece: innerConfig,
+    TypeEvolution: innerConfig,
+}
 
-function ask_or_guest(){
+export function ask_or_guest(tsconfig:TsConfig){
     let possiblePokemon = pokemonData;
     if (possiblePokemon.lenght ===1){
         consol.log(`Je pense a : ${possiblePokemon.lenght}`);
@@ -14,14 +29,11 @@ function ask_or_guest(){
     }
 }
 
-function buildquest(attribut, variable){
-    attribut = type;
-
+export function buildquest(tsconfig:TsConfig, attribut:string, variable:string){
+    const question = tsconfig[attribut].q + variable + "?"
+    return question;
 }
 
-function choosequest(){
-    ForEach(buildquest) => {
-
-    }
-
+export function choosequest(){
+    buildquest()
 }

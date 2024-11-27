@@ -1,57 +1,39 @@
 {
-  "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
-  },
-
-
-
   "Type": {
-    "q" : "Ton Pokémon est-il de type ",
-    "p" : 1,
+    "q": "Ton Pokémon est-il de type ",
+    "p": 1
   },
-
   "Evolution": {
-    "q" : "Ton Pokémon est-il de stade  ",
-    "p" : 1,
+    "q": "Ton Pokémon est-il de stade  ",
+    "p": 1
   },
-
   "Poids": {
-    "q" : "Ton Pokémon est-il plus lourd que ",
-    "p" : 1,
+    "q": "Ton Pokémon est-il plus lourd que ",
+    "p": 1
   },
-
   "Taille": {
-    "q" : "Ton Pokémon est-il plus grand que ",
-    "p" : 1,
+    "q": "Ton Pokémon est-il plus grand que ",
+    "p": 1
   },
-
   "Couleur": {
-    "q" : "Ton Pokémon est-il ",
-    "p" : 1,
+    "q": "Ton Pokémon est-il ",
+    "p": 1
   },
-
   "Rarete": {
-    "q" : "Ton Pokémon est-il ",
-    "p" : 1,
+    "q": "Ton Pokémon est-il ",
+    "p": 1
   },
-
   "Lieu": {
-    "q" : "Ton Pokémon vit-il dans ",
-    "p" : 1,
+    "q": "Ton Pokémon vit-il dans ",
+    "p": 1
   },
-
   "Espece": {
-    "q" : "Ton Pokémon ",
-    "p" : 1,
+    "q": "Ton Pokémon ",
+    "p": 1
   },
-
-  "Type d'évolution": {
-    "q" : "Pour évoluer, ton Pokémon a-t-il besoin ",
-    "p" : 1,
+  "TypeEvolution": {
+    "q": "Pour évoluer, ton Pokémon a-t-il besoin ",
+    "p": 1
   }
 }
+
