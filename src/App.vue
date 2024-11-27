@@ -2,7 +2,7 @@
     import toolbar from './components/Toolbar.vue';
     import Personnage from './components/Personnage.vue';
     import LivePokemons from './components/LivePokemons.vue';
-    import {listPokemon, saveListToFile} from "@/librairies/listPokemon";
+    import {listPokemon} from "@/librairies/listPokemon";
     import { ref } from 'vue';
     import type {Pokemon} from "@/librairies/api";
 
