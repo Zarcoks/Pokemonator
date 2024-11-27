@@ -2,7 +2,6 @@
 import {buildquest} from "@/librairies/poserquestion"
 import jsonData from "@/json/tsconfig.json"
     // Récupération et définition des variables utiles pour disable les buttons
-    const props = defineProps<{disable: boolean}>();
     const currentImage = new URL('@/assets/chen-akinator.png', import.meta.url).href;
     buildquest("Type", "test");
 </script>
@@ -15,9 +14,9 @@ import jsonData from "@/json/tsconfig.json"
                 <p><slot></slot></p>
             </div>
             <div id="buttons">
-                <button :disabled="props.disable">Oui</button>
-                <button :disabled="props.disable">Non</button>
-                <button :disabled="props.disable">Je ne sais pas</button>
+                <button>Oui</button>
+                <button>Non</button>
+                <button>Je ne sais pas</button>
             </div>
         </div>
     </div>
