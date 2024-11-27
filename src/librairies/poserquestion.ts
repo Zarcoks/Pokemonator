@@ -1,36 +1,25 @@
-interface innerConfig {
-    q: string,
-    p: number
-}
+import jsonData from "@/json/tsconfig.json"
 
-interface TsConfig {
-    Type: innerConfig,
-    Evolution: innerConfig,
-    Poids: innerConfig,
-    Taille: innerConfig,
-    Couleur: innerConfig,
-    Rarete: innerConfig,
-    Lieu: innerConfig,
-    Espece: innerConfig,
-    TypeEvolution: innerConfig,
-}
 
-export function ask_or_guest(tsconfig:TsConfig){
+export function ask_or_guest(){
+    /*
     let possiblePokemon = pokemonData;
     if (possiblePokemon.lenght ===1){
-        consol.log(`Je pense a : ${possiblePokemon.lenght}`);
+        console.log(`Je pense a : ${possiblePokemon.lenght}`);
     }
     else if (possiblePokemon.lenght < 1){
-        consol.log("Je n'ai pas reussi à trouver ton pokémon");
+        console.log("Je n'ai pas reussi à trouver ton pokémon");
     }
 
     else{
         choosequest();
     }
+     */
 }
 
-export function buildquest(tsconfig:TsConfig, attribut:string, variable:string){
-    const question = tsconfig[attribut].q + variable + "?"
+export function buildquest(attribut:string, variable:string){
+    const question = jsonData[attribut].q + variable + " ?"
+    console.log(question)
     return question;
 }
 

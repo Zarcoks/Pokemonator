@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import {ask_or_guest, buildquest} from "@/librairies/poserquestion"
+import {buildquest} from "@/librairies/poserquestion"
+import jsonData from "@/json/tsconfig.json"
     // Récupération et définition des variables utiles pour disable les buttons
     const props = defineProps<{disable: boolean}>();
     const currentImage = new URL('@/assets/chen-akinator.png', import.meta.url).href;
-    await fetch("@/json/tsconfig.json").then((json) => json.json().then(function (obj) {
-        console.log("ask or gest: " + ask_or_guest(obj))
-        console.log("buildquest: " + buildquest(obj, "...", "..."))
-    }))
+    buildquest("Type", "test");
 </script>
 
 <template>
