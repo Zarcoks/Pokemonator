@@ -15,84 +15,82 @@ export interface Pokemon {
     mythique: boolean; // Indique si c'est un Pokémon mythique
     objetEvoltution: string | null; // Objet nécessaire pour évoluer
     image: string; // URL de l'image
-    nivEvolutionMin : number; // niveau minimal pour être évoluer
+    nivEvolutionMin : number | null; // niveau minimal pour être évoluer
 }
 //  fonction pour récupérer l'ordre de la chaîne d"évolution
-function getEvolutionNumber(chain, nomPokemon: srting): number{
+function getEvolutionNumber(chain: any, nomPokemon: string): number{
     // pokemon de base
     if (chain.species.name === nomPokemon){
         return 1;
     }
     //1ere évolution
-    if (chain.evolves_to.flatMap(evo => evo.species.name).includes(nomPokemon)){
+    else if (chain.evolves_to.flatMap((evo:any) => evo.species.name).includes(nomPokemon)){
         return 2;
     }
     //2ème évolution
-    if (chain.evolves_to.flatMap(evo => evo.evolves_to
-        .flatMap(evo2 => evo2.species.name)).includes(nomPokemon)){
-        return 3;
-    }
+    return 3;
 }
 
 //fonction pour récupérer les conditions d'évolution d'un pokemon
-function getEvolutionTrigger(chain, numEvolution : number): string {
+function getEvolutionTrigger(chain: any, numEvolution : number): string | null {
     // 1ere evolution
     if(numEvolution === 2){
         return chain.evolves_to
-            .flatMap(evolution => evolution.evolution_details
-                .map(detail => detail.trigger.name))[0];
+            .flatMap((evolution:any) => evolution.evolution_details
+                .map((detail:any) => detail.trigger.name))[0];
     }
     //2ere évolution
-    if(numEvolution === 3){
+    else if(numEvolution === 3){
         return chain.evolves_to
-            .flatMap(evolution => evolution.evolves_to
-                .flatMap(evo => evo.evolution_details
-                    .map(detail => detail.trigger.name)))[0];
+            .flatMap((evolution: any) => evolution.evolves_to
+                .flatMap((evo: any) => evo.evolution_details
+                    .map((detail: any) => detail.trigger.name)))[0];
     }
+    return null;
 }
 
 // retourne l'objet utiliser pour évoluer ou null si il y en a pas
-function getEvolutionItem(chain, numEvolution : number) : string | null{
+function getEvolutionItem(chain:any, numEvolution : number) : string | null{
     //1ere évolution
     if(numEvolution === 2 ){
         const item : string = chain.evolves_to
-            .flatMap(evolution => evolution.evolution_details
-                .map(detail => detail.item?.name))[0]  // ? = si item est null empèche de faire une erreure
+            .flatMap((evolution:any) => evolution.evolution_details
+                .map((detail:any) => detail.item?.name))[0]  // ? = si item est null empèche de faire une erreure
         return item || null;
     }
     //2ere évolution
     if(numEvolution === 3){
         const item : string = chain.evolves_to
-            .flatMap(evolution => evolution.evolves_to
-                .flatMap(evo => evo.evolution_details
-                    .map(detail => detail.item?.name)))[0]
+            .flatMap((evolution:any) => evolution.evolves_to
+                .flatMap((evo:any) => evo.evolution_details
+                    .map((detail:any) => detail.item?.name)))[0]
         return item || null;
     }
     return null;
 }
 
 // récupère le niveau minimal pour l'évolution
-function getEvolutionlevelMin(chain, numEvolution : number) : string | null{
+function getEvolutionlevelMin(chain:any, numEvolution : number) : number | null{
     //1ere évolution
     if(numEvolution === 2 ){
         const level = chain.evolves_to
-            .flatMap(evolution => evolution.evolution_details
-                .map(detail => detail.min_level))[0]
+            .flatMap((evolution:any) => evolution.evolution_details
+                .map((detail:any) => detail.min_level))[0]
         return level || null;
     }
     //2ere évolution
     if(numEvolution === 3){
         const level = chain.evolves_to
-            .flatMap(evolution => evolution.evolves_to
-                .flatMap(evo => evo.evolution_details
-                    .map(detail => detail.min_level)))[0]
+            .flatMap((evolution:any) => evolution.evolves_to
+                .flatMap((evo:any) => evo.evolution_details
+                    .map((detail:any) => detail.min_level)))[0]
         return level || null;
     }
     return null;
 }
 
 // création d'un pokemon avec les infos utiles pour les questions grâce à une API
-export async function getPokemon(nameOrIndex: string | number) :promise<Pokemon>{
+export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>{
     // connection avec l'api pokémon avec la méthode Fetch (ne pas oublier le asynchrone)
     const reponse : Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrIndex}`);
 
@@ -110,9 +108,9 @@ export async function getPokemon(nameOrIndex: string | number) :promise<Pokemon>
 
     // appelle des fonctions ci dessus
     const nivEvolution : number = getEvolutionNumber(evolution.chain,data.name);
-    const evenement : string = getEvolutionTrigger(evolution.chain,nivEvolution);
+    const evenement : string | null = getEvolutionTrigger(evolution.chain,nivEvolution);
     const objetEvolution : string | null = getEvolutionItem(evolution.chain,nivEvolution);
-    const nivEvolutionMin: string | null = getEvolutionlevelMin(evolution.chain,nivEvolution);
+    const nivEvolutionMin: number | null = getEvolutionlevelMin(evolution.chain,nivEvolution);
 
     // création en json du pokemon avec les données trié pour les questions
     const pokemon: Pokemon = {
@@ -124,7 +122,7 @@ export async function getPokemon(nameOrIndex: string | number) :promise<Pokemon>
         nom: Species.names.find((name: { name: string; language: { name: string } }) =>
             name.language.name === "fr"
         )?.name,
-        type : data.types.map(typeObj => typeObj.type.name).join(', '), // type est un tableau donc on utilise la fonction map pour cherhcer dedans
+        type : data.types.map((typeObj:any) => typeObj.type.name).join(', '), // type est un tableau donc on utilise la fonction map pour cherhcer dedans
         couleur : Species.color.name,
         habitat : Species.habitat.name,
         forme : Species.shape.name,
