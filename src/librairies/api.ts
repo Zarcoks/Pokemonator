@@ -18,7 +18,7 @@ export interface Pokemon {
     nivEvolutionMin : number; // niveau minimal pour être évoluer
 }
 //  fonction pour récupérer l'ordre de la chaîne d"évolution
-function getEvolutionNumber(chain, nomPokemon){
+function getEvolutionNumber(chain, nomPokemon: srting): number{
     // pokemon de base
     if (chain.species.name === nomPokemon){
         return 1;
@@ -35,7 +35,7 @@ function getEvolutionNumber(chain, nomPokemon){
 }
 
 //fonction pour récupérer les conditions d'évolution d'un pokemon
-function getEvolutionTrigger(chain, numEvolution){
+function getEvolutionTrigger(chain, numEvolution : number): string {
     // 1ere evolution
     if(numEvolution === 2){
         return chain.evolves_to
@@ -52,17 +52,17 @@ function getEvolutionTrigger(chain, numEvolution){
 }
 
 // retourne l'objet utiliser pour évoluer ou null si il y en a pas
-function getEvolutionItem(chain, numEvolution){
+function getEvolutionItem(chain, numEvolution : number) : string | null{
     //1ere évolution
     if(numEvolution === 2 ){
-        const item = chain.evolves_to
+        const item : string = chain.evolves_to
             .flatMap(evolution => evolution.evolution_details
                 .map(detail => detail.item?.name))[0]  // ? = si item est null empèche de faire une erreure
         return item || null;
     }
     //2ere évolution
     if(numEvolution === 3){
-        const item = chain.evolves_to
+        const item : string = chain.evolves_to
             .flatMap(evolution => evolution.evolves_to
                 .flatMap(evo => evo.evolution_details
                     .map(detail => detail.item?.name)))[0]
@@ -72,7 +72,7 @@ function getEvolutionItem(chain, numEvolution){
 }
 
 // récupère le niveau minimal pour l'évolution
-function getEvolutionlevelMin(chain, numEvolution){
+function getEvolutionlevelMin(chain, numEvolution : number) : string | null{
     //1ere évolution
     if(numEvolution === 2 ){
         const level = chain.evolves_to
@@ -92,27 +92,27 @@ function getEvolutionlevelMin(chain, numEvolution){
 }
 
 // création d'un pokemon avec les infos utiles pour les questions grâce à une API
-export async function getPokemon(nameOrIndex: string | number){
+export async function getPokemon(nameOrIndex: string | number) :promise<Pokemon>{
     // connection avec l'api pokémon avec la méthode Fetch (ne pas oublier le asynchrone)
-    const reponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrIndex}`);
+    const reponse : Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrIndex}`);
 
     // conversion de notre réponse à la requette en 1 objet json
     const data = await reponse.json();
     //console.log(data)
 
     // requette de préparation pour aller chercher les infos dans species avec l'url donné
-    const  reqSpecies = await fetch (data.species.url);
+    const  reqSpecies: Response = await fetch (data.species.url);
     const Species = await reqSpecies.json();
 
     // requette de la chaine d'évolution du pokemon
-    const  reqEvolution = await fetch (Species.evolution_chain.url);
+    const  reqEvolution :Response = await fetch (Species.evolution_chain.url);
     const evolution = await reqEvolution.json();
 
     // appelle des fonctions ci dessus
-    const nivEvolution = getEvolutionNumber(evolution.chain,data.name);
-    const evenement = getEvolutionTrigger(evolution.chain,nivEvolution);
-    const objetEvolution = getEvolutionItem(evolution.chain,nivEvolution);
-    const nivEvolutionMin = getEvolutionlevelMin(evolution.chain,nivEvolution);
+    const nivEvolution : number = getEvolutionNumber(evolution.chain,data.name);
+    const evenement : string = getEvolutionTrigger(evolution.chain,nivEvolution);
+    const objetEvolution : string | null = getEvolutionItem(evolution.chain,nivEvolution);
+    const nivEvolutionMin: string | null = getEvolutionlevelMin(evolution.chain,nivEvolution);
 
     // création en json du pokemon avec les données trié pour les questions
     const pokemon: Pokemon = {
