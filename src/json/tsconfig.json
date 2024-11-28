@@ -1,11 +1,13 @@
 {
   "Type": {
     "q": "Ton Pokémon est-il de type ",
-    "p": 1
+    "p": 1,
+    "attr" : ["normal", "combat","vol", "poison","sol","roche","insecte","spectre","acier","feu","eau","plante","electrik","psy","glace","dragon","ténèbres" ,"fée","stellaire"]
   },
   "Evolution": {
     "q": "Ton Pokémon est-il de stade  ",
-    "p": 1
+    "p": 1,
+    "attr" : [1,2,3]
   },
   "Poids": {
     "q": "Ton Pokémon est-il plus lourd que ",
@@ -17,23 +19,28 @@
   },
   "Couleur": {
     "q": "Ton Pokémon est-il ",
-    "p": 1
+    "p": 1,
+    "attr" : ["noir", "bleu","marron","gris","vert","rose","violet","rouge","blanc","jaune"]
   },
   "Rarete": {
     "q": "Ton Pokémon est-il ",
-    "p": 1
+    "p": 1,
+    "attr" : ["commun", "légendaire", "mythique"],
   },
   "Lieu": {
     "q": "Ton Pokémon vit-il dans ",
-    "p": 1
+    "p": 1,
+    "attr" : ["cave", "foret", "prairie", "montagne", "rare","milieux hostilles","mers","zone urbaine","marécages"]
   },
   "Espece": {
     "q": "Ton Pokémon ",
-    "p": 1
+    "p": 1,
+    "attr" : ["balle","sinueux","poisson","bras","blob","droit","jambes","quadruped","ailes","tentacules","têtes","humanoïde","ailes d'insecte","armure"]
   },
   "TypeEvolution": {
     "q": "Pour évoluer, ton Pokémon a-t-il besoin ",
-    "p": 1
-  }
+    "p": 1,
+    "attr" : ["montée de niveau","échange","utilisation d'un objet"]
+  },
 }
 

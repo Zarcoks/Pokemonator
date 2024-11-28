@@ -24,5 +24,27 @@ export function buildquest(attribut:string, variable:string){
 }
 
 export function choosequest(){
-    buildquest()
+
+    for (const categorie in jsonData)
+        if (Object.prototype.hasOwnProperty.call(tsConfig, categorie)) {
+            const data = tsConfig[categorie];
+            const baseQuestion = data.q; // La question de base
+
+            // Générer les questions avec les attributs (attr) s'ils existent
+            if (data.attr && Array.isArray(data.attr)) {
+                data.attr.forEach((valeur: string | number) => {
+                    questions.push(`${baseQuestion}${valeur}`);
+                });
+            } else {
+                // Si pas d'attributs, ajouter la question seule
+                questions.push(baseQuestion);
+            }
+        }
+console.log(questions);
 }
+
+// Appeler la fonction pour générer toutes les questions
+const allQuestions = chooseQuest();
+allQuestions.forEach((question, index) => {
+    console.log(`${index + 1}. ${question}`);
+});
