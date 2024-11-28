@@ -1,6 +1,6 @@
 import categorie from "@/json/dataQuestions.json"
 import type { Pokemon } from "./api";
-import { attributQuestCorrespondPokemon, isEquivalentTo } from "./dataManagement";
+import { attributQuestCorrespondPokemon } from "./dataManagement";
 
 interface Categorie {
     categorie: string,
