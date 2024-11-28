@@ -11,26 +11,8 @@
 
     let workingOnPokemons = ref(pokemons) // La liste de tous les pokemons à modifier
     let impossiblePokemons = ref(new Array<Pokemon>()) // La liste des pokemons éliminés par les questions
-    // Variable pour activer / désactiver les boutons le temps que les données soient chargées
-    //let isDataLoaded = ref(false)
     let question = ref(getNextQuestion(workingOnPokemons.value)); // La question loadé dynamiquement
 
-    console.log(question.value);
-
-    //listPokemon().then((tab) => callback(tab)) // Requete à l'API pour la liste de pokemons
-
-    /**
-     * Fonction de traitement des données récupérées
-     * @param tabOfPokemons
-     *
-    function callback(tabOfPokemons:Pokemon[]) {
-        console.log(tabOfPokemons);
-        
-        workingOnPokemons.value = tabOfPokemons // Affecte les pokemons à la variable
-        isDataLoaded.value = true
-        question.value = "La question à poser..."
-    }
-        */
     function updateQuestion() {
         question.value = getNextQuestion(workingOnPokemons.value)
     }
