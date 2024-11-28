@@ -25,10 +25,12 @@ export function buildquest(attribut:string, variable:string){
 
 export function choosequest(){
 
+    let questions = [];
     for (const categorie in jsonData)
-        if (Object.prototype.hasOwnProperty.call(tsConfig, categorie)) {
-            const data = tsConfig[categorie];
+        if (Object.prototype.hasOwnProperty.call(jsonData, categorie)) {
+            const data = jsonData[categorie];
             const baseQuestion = data.q; // La question de base
+            
 
             // Générer les questions avec les attributs (attr) s'ils existent
             if (data.attr && Array.isArray(data.attr)) {
@@ -40,11 +42,12 @@ export function choosequest(){
                 questions.push(baseQuestion);
             }
         }
-console.log(questions);
+    console.log(questions);
+    return questions;
 }
 
 // Appeler la fonction pour générer toutes les questions
-const allQuestions = chooseQuest();
+const allQuestions = choosequest();
 allQuestions.forEach((question, index) => {
     console.log(`${index + 1}. ${question}`);
 });
