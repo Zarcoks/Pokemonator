@@ -46,11 +46,6 @@ export function getNextQuestion(possiblePokeList:Pokemon[]) {
     return attributs
 }
 
-function exclusPokemon(p: Pokemon, pokeList1: Pokemon[], pokeList2: Pokemon[]) {
-    pokeList2.push(p)
-    pokeList1 = pokeList1.filter((pok:Pokemon) => pok.nom !== p.nom)
-}
-
 export function updateData(answer: string, question:CategorieAttribut, possiblePokemon:Pokemon[], impossiblePokemon:Pokemon[]) {
     if (answer === "oui") {
         // On fera un truc
