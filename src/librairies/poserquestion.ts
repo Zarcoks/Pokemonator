@@ -1,5 +1,6 @@
 import categorie from "@/json/dataQuestions.json"
 import type { Pokemon } from "./api";
+import { isEquivalentTo } from "./dataManagement";
 
 interface Categorie {
     categorie: string,
@@ -33,7 +34,7 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
  * avec une question compréhensible
  */
 function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
-    categorieAttributQuestion.question = categorieAttributQuestion.categorie.q + categorieAttributQuestion.attribut + " ?"
+    categorieAttributQuestion.question = categorieAttributQuestion.categorie.q + " " + categorieAttributQuestion.attribut + " ?"
 }
 
 /**
@@ -48,7 +49,7 @@ export function getNextQuestion(possiblePokeList:Pokemon[]) {
 
 export function updateData(answer: string, question:CategorieAttribut, possiblePokemon:Pokemon[], impossiblePokemon:Pokemon[]) {
     if (answer === "oui") {
-        // On fera un truc
+        console.log(isEquivalentTo(question, possiblePokemon[0]))
     } else if (answer === "non") {
          // Autre chose
     } else {
