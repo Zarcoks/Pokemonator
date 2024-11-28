@@ -25,7 +25,7 @@
   "Rarete": {
     "q": "Ton Pokémon est-il ",
     "p": 1,
-    "attr" : ["commun", "légendaire", "mythique"],
+    "attr" : ["commun", "légendaire", "mythique"]
   },
   "Lieu": {
     "q": "Ton Pokémon vit-il dans ",
@@ -41,6 +41,5 @@
     "q": "Pour évoluer, ton Pokémon a-t-il besoin ",
     "p": 1,
     "attr" : ["montée de niveau","échange","utilisation d'un objet"]
-  },
+  }
 }
-
