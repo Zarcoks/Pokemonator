@@ -14,15 +14,15 @@
     },
     {
       "categorie": "Poids",
-      "q": "Ton Pokémon est-il plus lourd que ",
+      "q": "Ton Pokémon est-il ",
       "p": 1,
-      "attr": ["lourd", "moyen", "léger"]
+      "attr": ["lourd (kg)", "de poids moyen (kg)", "léger (kg)"]
     },
     {
       "categorie": "Taille",
-      "q": "Ton Pokémon est-il plus grand que ",
+      "q": "Ton Pokémon est-il ",
       "p": 1,
-      "attr": ["grand", "moyen", "petit"]
+      "attr": ["grand (cm)", "de taille moyenne (cm)", "petit (cm)"]
     },
     {
       "categorie": "Couleur",
@@ -40,19 +40,19 @@
       "categorie": "Lieu",
       "q": "Ton Pokémon vit-il dans les ",
       "p": 1,
-      "attr" : ["cave", "foret", "prairie", "montagne", "milieux rare","milieux hostilles","mers","zone urbaine","marécages"]
+      "attr" : ["caves", "forêts", "prairies", "montagnes", "milieux rares","milieux hostilles","mers","zones urbaines","marécages"]
     },
     {
       "categorie": "Espece",
-      "q": "Ton Pokémon ",
+      "q": "Ton Pokémon a-t-il une forme",
       "p": 1,
-      "attr" : ["balle","sinueux","poisson","bras","blob","droit","jambes","quadruped","ailes","tentacules","têtes","humanoïde","ailes d'insecte","armure"]
+      "attr" : ["de balle","sinueuse","de poisson","de bras","de blob","droite","de jambes","quadruped","ailes","tentacules","têtes","humanoïde","ailes d'insecte","armure"]
     },
     {
       "categorie": "TypeEvolution",
       "q": "Pour évoluer, ton Pokémon a-t-il besoin ",
       "p": 1,
-      "attr" : ["d'une montée de niveau","d'un échange","d'une utilisation d'un objet"]
+      "attr" : ["de montée de niveau","d'être échangé","d'utiliser d'un objet"]
     }
   ]
 }

@@ -18,6 +18,7 @@ export interface CategorieAttribut {
  * retourne un objet avec en "categorie" la catégorie de la question à poser et en
  * "attribut" l'attribut de la catégorie de la question à poser.
  */
+
 function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
     // TODO: améliorer l'algo
     let indexCat = Math.floor(Math.random() * categorie.categories.length);
@@ -32,8 +33,7 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
  * avec une question compréhensible
  */
 function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
-    // Todo: à travailler un peu mieux
-    categorieAttributQuestion.question = categorieAttributQuestion.categorie.categorie + " = " + categorieAttributQuestion.attribut + " ?"
+    categorieAttributQuestion.question = categorieAttributQuestion.categorie.q + categorieAttributQuestion.attribut + " ?"
 }
 
 /**
