@@ -2,14 +2,13 @@
 import type {Pokemon} from "@/librairies/api";
 
   // Récupération et définition des variables utiles au fonctionnement du composant
-  const props = defineProps<{isDataLoaded: boolean, pokemons: Pokemon[], grised: Pokemon[]}>();
+  const props = defineProps<{pokemons: Pokemon[], grised: Pokemon[]}>();
 
 /**
  * Détermine is un pokemon doit être grisé ou pas
  * @param pokemon
  */
   function isGrised(pokemon:Pokemon) {
-      console.log(props.grised.indexOf(pokemon));
       return props.grised.indexOf(pokemon) >= 0;
   }
 
@@ -24,12 +23,11 @@ import type {Pokemon} from "@/librairies/api";
 <template>
   <div id="pokemons">
     <h2>Les pokemons auxquels je pense...</h2>
-    <div :class="{aligneGif: !isDataLoaded}">
+    <div>
         <article v-for="pok in trierGrised()" :class="{grised:(isGrised(pok))}">
             <img :src="pok.image" alt="pik"/>
             <span>{{ pok.nom }}</span>
         </article>
-        <img :class="{hidden: props.isDataLoaded}" src="@/assets/loading.gif" alt="Loading..." />
     </div>
   </div>
 </template>
@@ -76,9 +74,5 @@ import type {Pokemon} from "@/librairies/api";
     article:hover {
         background-color: rgb(252, 252, 252);
         transition: all 200ms ease-out;
-    }
-
-    .hidden {
-      display: none;
     }
 </style>

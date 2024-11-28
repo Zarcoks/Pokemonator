@@ -10,6 +10,6 @@ export async function listPokemon() {
         listPokemon.push(pokemon);
     }
 
-    console.log('liste des pokemon', listPokemon);
+    //console.log('liste des pokemon', listPokemon);
     return listPokemon;
 }
