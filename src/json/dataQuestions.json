@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "categorie": "Type",
+      "q": "Ton Pokémon est-il de type ",
+      "p": 1,
+      "attr" : ["normal", "combat","vol", "poison","sol","roche","insecte","spectre","acier","feu","eau","plante","electrik","psy","glace","dragon","ténèbres" ,"fée","stellaire"]
+    },
+    {
+      "categorie": "Evolution",
+      "q": "Ton Pokémon est-il de stade  ",
+      "p": 1,
+      "attr" : ["1","2","3"]
+    },
+    {
+      "categorie": "Poids",
+      "q": "Ton Pokémon est-il plus lourd que ",
+      "p": 1,
+      "attr": ["lourd", "moyen", "léger"]
+    },
+    {
+      "categorie": "Taille",
+      "q": "Ton Pokémon est-il plus grand que ",
+      "p": 1,
+      "attr": ["grand", "moyen", "petit"]
+    },
+    {
+      "categorie": "Couleur",
+      "q": "Ton Pokémon est-il ",
+      "p": 1,
+      "attr" : ["noir", "bleu","marron","gris","vert","rose","violet","rouge","blanc","jaune"]
+    },
+    {
+      "categorie": "Rarete",
+      "q": "Ton Pokémon est-il ",
+      "p": 1,
+      "attr" : ["commun", "légendaire", "mythique"]
+    },
+    {
+      "categorie": "Lieu",
+      "q": "Ton Pokémon vit-il dans les ",
+      "p": 1,
+      "attr" : ["cave", "foret", "prairie", "montagne", "milieux rare","milieux hostilles","mers","zone urbaine","marécages"]
+    },
+    {
+      "categorie": "Espece",
+      "q": "Ton Pokémon ",
+      "p": 1,
+      "attr" : ["balle","sinueux","poisson","bras","blob","droit","jambes","quadruped","ailes","tentacules","têtes","humanoïde","ailes d'insecte","armure"]
+    },
+    {
+      "categorie": "TypeEvolution",
+      "q": "Pour évoluer, ton Pokémon a-t-il besoin ",
+      "p": 1,
+      "attr" : ["d'une montée de niveau","d'un échange","d'une utilisation d'un objet"]
+    }
+  ]
+}

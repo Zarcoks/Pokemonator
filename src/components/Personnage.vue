@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import {buildquest} from "@/librairies/poserquestion"
-import jsonData from "@/json/tsconfig.json"
     // Récupération et définition des variables utiles pour disable les buttons
     const currentImage = new URL('@/assets/chen-akinator.png', import.meta.url).href;
-    buildquest("Type", "test");
 </script>
 
 <template>
@@ -14,9 +11,9 @@ import jsonData from "@/json/tsconfig.json"
                 <p><slot></slot></p>
             </div>
             <div id="buttons">
-                <button>Oui</button>
-                <button>Non</button>
-                <button>Je ne sais pas</button>
+                <button @click="$emit('oui')">Oui</button>
+                <button @click="$emit('non')">Non</button>
+                <button @click="$emit('jsp')">Je ne sais pas</button>
             </div>
         </div>
     </div>
