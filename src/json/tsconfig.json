@@ -40,7 +40,7 @@
   "TypeEvolution": {
     "q": "Pour évoluer, ton Pokémon a-t-il besoin ",
     "p": 1,
+
     "attr" : ["d'une montée de niveau","d'un échange","d'une utilisation d'un objet"]
   }
 }
-
