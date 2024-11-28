@@ -1,6 +1,6 @@
 import categorie from "@/json/dataQuestions.json"
 import type { Pokemon } from "./api";
-import { isEquivalentTo } from "./dataManagement";
+import { attributQuestCorrespondPokemon, isEquivalentTo } from "./dataManagement";
 
 interface Categorie {
     categorie: string,
@@ -49,7 +49,7 @@ export function getNextQuestion(possiblePokeList:Pokemon[]) {
 
 export function updateData(answer: string, question:CategorieAttribut, possiblePokemon:Pokemon[], impossiblePokemon:Pokemon[]) {
     if (answer === "oui") {
-        console.log(isEquivalentTo(question, possiblePokemon[0]))
+        console.log(attributQuestCorrespondPokemon(question, possiblePokemon[0]))
     } else if (answer === "non") {
          // Autre chose
     } else {

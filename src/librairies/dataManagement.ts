@@ -45,7 +45,7 @@ function equivalentTaille(pokemon: Pokemon, taille: string) {
  * @param cat 
  * @param pokemon 
  */
-export function isEquivalentTo(cat: CategorieAttribut, pokemon: Pokemon) {
+export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: Pokemon) {
     const sensibleCategories = ["Taille", "Poids", "Rarete", "TypeEvolution"]
     // Pour chaque catégorie de question, pour chaque attribut, s'il y en a un qui fit, c'est correct
     // Une partie classique et une partie sensible
