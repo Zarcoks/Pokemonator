@@ -75,4 +75,23 @@ import type {Pokemon} from "@/librairies/api";
         background-color: rgb(252, 252, 252);
         transition: all 200ms ease-out;
     }
+
+    #pokemons > div::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 50px;
+  background: transparent;
+}
+
+#pokemons > div::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 50px;
+}
+
+#pokemons > div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+
+
 </style>
