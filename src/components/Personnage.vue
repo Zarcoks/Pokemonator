@@ -20,6 +20,10 @@
 </template>
 
 <style scoped>
+    #question {
+        width: 300px;
+    }
+
     img {
         max-width: 300px;
         margin: 10px
