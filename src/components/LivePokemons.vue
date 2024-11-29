@@ -17,7 +17,6 @@ import { computed } from "vue";
    * Retourne le tableau de TOUS les pokemons avec les non-grisés AVANT les grisés
    */
   function trierGrised() {
-    console.log(pokemonFiltres);
     return props.pokemons.concat(props.grised);
   }
 
