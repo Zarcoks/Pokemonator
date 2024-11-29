@@ -19,7 +19,7 @@ function rareteEquivalente(pokemon: Pokemon, rareteQuestion:string) {
 function typeEvolutionEquivalent(pokemon: Pokemon, typeEvolutionQuestion: string) {
     if (typeEvolutionQuestion === "d'une montée de niveau") return pokemon.evenement === "level-up"
     else if (typeEvolutionQuestion === "d'un échange") return pokemon.evenement === "trade"
-    else return pokemon.objetEvoltution === null;
+    else return pokemon.objetEvoltution !== null;
 }
 
 function equivalentPoids(pokemon:Pokemon, poids: string) {

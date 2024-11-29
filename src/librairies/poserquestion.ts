@@ -63,12 +63,14 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
         //console.log(attributQuestCorrespondPokemon(question, possiblePokemon[0]))
         // For chaque pokemon, ça check si ça correspond, si ça correspond, le garde, sinon le jerte
         possiblePokemon.forEach((pok:Pokemon) => {
+            /*
             console.log("Question:");
             console.log(question);
             console.log("Pokemon");
             console.log(pok);
             console.log("Correspondance");
             console.log(attributQuestCorrespondPokemon(question, pok));
+            */
             
             if (!attributQuestCorrespondPokemon(question, pok)) {
                 console.log("J'exclus " + pok.nom);

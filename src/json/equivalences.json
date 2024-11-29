@@ -2,8 +2,6 @@
     "Categories": {
         "Type": "type",
         "Evolution": "nivEvolution",
-        "Poids": "poids",
-        "Taille": "taille",
         "Couleur": "couleur",
         "Lieu": "habitat",
         "Espece": "forme"
@@ -28,12 +26,6 @@
         "ténèbres": "dark",
         "fée": "fairy",
         "stellaire": "cosmic",
-        "lourd (kg)": "poids>=300",
-        "de poids moyen (kg)": "100<=poids<300",
-        "léger (kg)": "poids<100",
-        "grand (cm)": "taille>=15",
-        "de taille moyenne (cm)": "5<=taille<15",
-        "petit (cm)": "taille<5",
         "noir": "black",
         "bleu": "blue",
         "marron": "brown",

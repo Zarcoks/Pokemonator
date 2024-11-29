@@ -61,8 +61,6 @@ props.pokemons.forEach(pokemon => {
           </div>
         </article>
     </div>
-
-
   </div>
 </template>
 
