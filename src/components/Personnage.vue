@@ -20,6 +20,10 @@
 </template>
 
 <style scoped>
+    #question {
+        width: 300px;
+    }
+
     img {
         max-width: 300px;
         margin: 10px
@@ -43,5 +47,6 @@
         flex-direction: column;
         justify-content: space-evenly;
         width: 150px;
-    }    
+    }   
+
 </style>

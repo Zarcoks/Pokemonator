@@ -18,6 +18,9 @@ import type {Pokemon} from "@/librairies/api";
   function trierGrised() {
     return props.pokemons.concat(props.grised);
   }
+
+  const pokemonFiltres = computed(trierGrised)
+
 </script>
 
 <template>
@@ -50,7 +53,6 @@ import type {Pokemon} from "@/librairies/api";
 </template>
 
 <style scoped>
-
     #pokemons {
       display: flex;
       flex-direction: column;
@@ -60,13 +62,12 @@ import type {Pokemon} from "@/librairies/api";
     #pokemons > div {
         display: flex;
         flex-direction: column;
-        overflow: scroll;
+        overflow-y: scroll;
         width: 300px;
         height: 300px;
         background-color: lightgray;
         border-radius: 20px;
         border: solid 1px;
-
     }
 
     .aligneGif {
@@ -82,13 +83,10 @@ import type {Pokemon} from "@/librairies/api";
     article > #base {
         display: flex;
         align-items: center;
-
         background-color: rgb(230, 230, 230);
         border-bottom: solid 1px;
         overflow-y : hidden;
-
     }
-
 
     #infos {
       display: none;
@@ -117,10 +115,12 @@ import type {Pokemon} from "@/librairies/api";
       border-bottom: solid 1px;
     }
 
-
     .grised {
         background-color: rgb(105, 105, 105);
     }
 
+    #pokemons > div::-webkit-scrollbar {
+      display: none;
+    }
 
 </style>
