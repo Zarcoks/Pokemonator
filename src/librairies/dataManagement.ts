@@ -2,12 +2,6 @@ import type { Pokemon } from "./api"
 import type { CategorieAttribut } from "./poserquestion"
 import equivalences from "@/json/equivalences.json"
 
-
-function exclusPokemon(p: Pokemon, pokeList1: Pokemon[], pokeList2: Pokemon[]) {
-    pokeList2.push(p)
-    pokeList1 = pokeList1.filter((pok:Pokemon) => pok.nom !== p.nom)
-}
-
 function getCategorieEquivalente(categorie: keyof typeof equivalences.Categories) {
     return equivalences.Categories[categorie];
 }
@@ -54,7 +48,7 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
         let attributPokemon = pokemon[getCategorieEquivalente(cat.categorie.categorie)] // l'erreur c'est le type car il est pas sur que ton string soit une clé du tab
         let attributQuestion = getAttributEquivalent(cat.attribut) // idem
 
-       
+       /*
         console.log("attribut pokemon:");
         console.log(attributPokemon);
         console.log("attribut raw:");
@@ -62,7 +56,7 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
         console.log("attribut jugé équivalent:");
         console.log(attributQuestion);
         console.log("----------------------");
-        
+        */
         
         if (Array.isArray(attributPokemon)) {
             // Cas où les pokemons ont plusieurs valeurs dans la catégorie (ex: type = [grass, poison])

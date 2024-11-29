@@ -49,11 +49,30 @@ export function getNextQuestion(possiblePokeList:Pokemon[]) {
     return attributs
 }
 
+function exclusPokemon(p: Pokemon, pokeList1: Pokemon[], pokeList2: Pokemon[]) {
+    pokeList2.push(p);
+    const index = pokeList1.findIndex((pok: Pokemon) => pok.nom === p.nom);
+    if (index !== -1) {
+        pokeList1.splice(index, 1); // Supprime l'élément directement de la liste
+    }
+}
+
 export function updateData(answer: string, question:CategorieAttribut, possiblePokemon:Pokemon[], impossiblePokemon:Pokemon[]) {
     if (answer === "oui") {
-        console.log(attributQuestCorrespondPokemon(question, possiblePokemon[0]))
+        //console.log(attributQuestCorrespondPokemon(question, possiblePokemon[0]))
+        // For chaque pokemon, ça check si ça correspond, si ça correspond, le garde, sinon le jerte
+        possiblePokemon.forEach((pok:Pokemon) => {
+            if (!attributQuestCorrespondPokemon(question, pok)) {
+                exclusPokemon(pok, possiblePokemon, impossiblePokemon)
+            }
+        })
     } else if (answer === "non") {
-        console.log(!attributQuestCorrespondPokemon(question, possiblePokemon[0]))
+        //console.log(!attributQuestCorrespondPokemon(question, possiblePokemon[0]))
+        possiblePokemon.forEach((pok:Pokemon) => {
+            if (attributQuestCorrespondPokemon(question, pok)) {
+                exclusPokemon(pok, possiblePokemon, impossiblePokemon)
+            }
+        })
     } else {
         // Encore autre chose
     }

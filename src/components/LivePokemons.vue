@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {Pokemon} from "@/librairies/api";
+import { computed } from "vue";
 
   // Récupération et définition des variables utiles au fonctionnement du composant
   const props = defineProps<{pokemons: Pokemon[], grised: Pokemon[]}>();
@@ -16,15 +17,19 @@ import type {Pokemon} from "@/librairies/api";
    * Retourne le tableau de TOUS les pokemons avec les non-grisés AVANT les grisés
    */
   function trierGrised() {
+    console.log(pokemonFiltres);
     return props.pokemons.concat(props.grised);
   }
+
+  const pokemonFiltres = computed(trierGrised)
+  
 </script>
 
 <template>
   <div id="pokemons">
     <h2>Les pokemons auxquels je pense...</h2>
     <div>
-        <article v-for="pok in trierGrised()" :class="{grised:(isGrised(pok))}">
+        <article v-for="pok in pokemonFiltres" :key="pok.nom" :class="{grised:(isGrised(pok))}">
             <img :src="pok.image" alt="pik"/>
             <span>{{ pok.nom }}</span>
         </article>
