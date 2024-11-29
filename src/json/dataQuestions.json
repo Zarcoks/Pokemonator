@@ -46,7 +46,7 @@
       "categorie": "Espece",
       "q": "Ton Pokémon a-t-il une forme",
       "p": 1,
-      "attr" : ["de balle","sinueuse","de poisson","de bras","de blob","droite","de jambes","quadruped","ailes","tentacules","têtes","humanoïde","ailes d'insecte","armure"]
+      "attr" : ["de balle","sinueuse","de poisson","de bras","de blob","droite","de jambes","de quadruped","d'ailes","de tentacules","de têtes","humanoïde","d'ailes d'insecte","d'armure"]
     },
     {
       "categorie": "TypeEvolution",

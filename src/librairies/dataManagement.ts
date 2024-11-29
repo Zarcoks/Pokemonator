@@ -54,8 +54,7 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
         let attributPokemon = pokemon[getCategorieEquivalente(cat.categorie.categorie)] // l'erreur c'est le type car il est pas sur que ton string soit une clé du tab
         let attributQuestion = getAttributEquivalent(cat.attribut) // idem
 
-        /*
-        // Pour tester si chatgpt n'a pas fait de faute dans les équivalences (pas encore fait):
+       
         console.log("attribut pokemon:");
         console.log(attributPokemon);
         console.log("attribut raw:");
@@ -63,7 +62,7 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
         console.log("attribut jugé équivalent:");
         console.log(attributQuestion);
         console.log("----------------------");
-        */
+        
         
         if (Array.isArray(attributPokemon)) {
             // Cas où les pokemons ont plusieurs valeurs dans la catégorie (ex: type = [grass, poison])

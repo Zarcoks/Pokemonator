@@ -22,6 +22,8 @@ export interface CategorieAttribut {
 
 function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
     // TODO: améliorer l'algo
+    let proportion =
+
     let indexCat = Math.floor(Math.random() * categorie.categories.length);
     let cat = categorie.categories[indexCat]
     let att = categorie.categories[indexCat].attr[Math.floor(Math.random() * categorie.categories[indexCat].attr.length)]
@@ -51,7 +53,7 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
     if (answer === "oui") {
         console.log(attributQuestCorrespondPokemon(question, possiblePokemon[0]))
     } else if (answer === "non") {
-         // Autre chose
+        console.log(!attributQuestCorrespondPokemon(question, possiblePokemon[0]))
     } else {
         // Encore autre chose
     }
