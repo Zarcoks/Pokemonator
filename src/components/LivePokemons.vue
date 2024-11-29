@@ -28,7 +28,7 @@ import { computed } from "vue";
   <div id="pokemons">
     <h2>Les pokemons auxquels je pense...</h2>
     <div>
-        <article v-for="pok in trierGrised()" :class="{grised:(isGrised(pok))}">
+        <article v-for="pok in pokemonFiltres" :class="{grised:(isGrised(pok))}">
           <div id="base">
             <img :src="pok.image" alt="pik"/>
             <span>{{ pok.nom }}</span>
@@ -84,7 +84,6 @@ import { computed } from "vue";
     article > #base {
         display: flex;
         align-items: center;
-        background-color: rgb(230, 230, 230);
         border-bottom: solid 1px;
         overflow-y : hidden;
     }
