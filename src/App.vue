@@ -38,4 +38,11 @@
         align-items: center;
         margin: auto;
     }
+
+    /* On screens that are 600px or less, set the background color to olive */
+    @media screen and (max-width: 1000px) {
+        main {
+            flex-direction: column;
+        }
+    }
 </style>

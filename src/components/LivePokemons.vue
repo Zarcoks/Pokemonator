@@ -42,7 +42,7 @@ import type {Pokemon} from "@/librairies/api";
     #pokemons > div {
         display: flex;
         flex-direction: column;
-        overflow: scroll;
+        overflow-y: scroll;
         width: 300px;
         height: 200px;
         background-color: lightgray;
@@ -77,21 +77,7 @@ import type {Pokemon} from "@/librairies/api";
     }
 
     #pokemons > div::-webkit-scrollbar {
-  width: 8px;
-  border-radius: 50px;
-  background: transparent;
-}
-
-#pokemons > div::-webkit-scrollbar-thumb {
-  background: gray;
-  border-radius: 50px;
-}
-
-#pokemons > div::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 5px;
-}
-
-
+      display: none;
+    }
 
 </style>
