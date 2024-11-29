@@ -22,8 +22,6 @@ export interface CategorieAttribut {
 
 function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
     // TODO: améliorer l'algo
-    //let proportion =
-
     let indexCat = Math.floor(Math.random() * categorie.categories.length);
     let cat = categorie.categories[indexCat]
     let att = categorie.categories[indexCat].attr[Math.floor(Math.random() * categorie.categories[indexCat].attr.length)]

@@ -47,5 +47,6 @@
         flex-direction: column;
         justify-content: space-evenly;
         width: 150px;
-    }    
+    }   
+
 </style>

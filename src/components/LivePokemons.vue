@@ -47,7 +47,7 @@ import { computed } from "vue";
     #pokemons > div {
         display: flex;
         flex-direction: column;
-        overflow: scroll;
+        overflow-y: scroll;
         width: 300px;
         height: 200px;
         background-color: lightgray;
@@ -80,4 +80,9 @@ import { computed } from "vue";
         background-color: rgb(252, 252, 252);
         transition: all 200ms ease-out;
     }
+
+    #pokemons > div::-webkit-scrollbar {
+      display: none;
+    }
+
 </style>
