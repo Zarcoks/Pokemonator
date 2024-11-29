@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {Pokemon} from "@/librairies/api";
+import { computed } from "vue";
 
   // Récupération et définition des variables utiles au fonctionnement du composant
   const props = defineProps<{pokemons: Pokemon[], grised: Pokemon[]}>();
