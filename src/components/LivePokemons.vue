@@ -45,6 +45,7 @@ props.pokemons.forEach(pokemon => {
             <span>{{ pok.nom }}</span>
           </div>
           <div :class="{infos: true, hidden: pok.clicked}">
+            <h5> Les informations</h5>
             <span> numéro pokédex : {{ pok.pokedex }}</span>
             <span> type : {{pok.type}}</span>
             <span> phase chaine d'évolution : {{pok.nivEvolution}}</span>
@@ -76,15 +77,10 @@ props.pokemons.forEach(pokemon => {
         flex-direction: column;
         overflow-y: scroll;
         width: 300px;
-        height: 300px;
+        height: 350px;
         background-color: lightgray;
         border-radius: 20px;
         border: solid 1px;
-    }
-
-    .aligneGif {
-      align-items: center;
-      justify-content: center;
     }
 
     img {
@@ -107,27 +103,27 @@ props.pokemons.forEach(pokemon => {
         display: flex;
         align-items: center;
         overflow-y : hidden;
-      width: 100%;
+        width: 100%;
     }
 
     .hidden {
       display: none;
     }
 
+    .infos {
+      opacity: 1;
+      padding: 10px;
+    }
+
     .infos > span {
       display: block;
-      align-items: center;
+      padding: 5px;
+      width: 100%;
     }
+
 
     article:hover {
       background-color: rgb(252, 252, 252);
-    }
-
-    .infos {
-      position: absolute;
-      top: 0;
-      opacity: 1;
-      padding: 10px;
     }
 
     .grised {
