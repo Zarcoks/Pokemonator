@@ -20,12 +20,50 @@ export interface CategorieAttribut {
  * "attribut" l'attribut de la catégorie de la question à poser.
  */
 
+function count<T>(array: T[], value: T): number {
+    return array.filter((item) => item === value).length;
+  }
+
 function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
+    let i = 0;
+    let meilleureSolution = {
+        categorie: "",
+        attribut: "",
+        score: 0,
+        question: "",
+    }
+    categorie.categories.forEach(cat => {
+        cat.attr.forEach(att => {
+            i = 0
+            possiblePokeList.forEach(pokemon => {
+                let obj = {
+                    categorie: cat,
+                    attribut: att,
+                    question: null
+                }
+                if (attributQuestCorrespondPokemon(obj , pokemon)) i++;
+            })
+            // Le nombre de pok vaut i :
+            let sc = calculateScore(possiblePokeList, i)
+            if (sc > meilleureSolution.score) {
+                meilleureSolution.score = sc
+                meilleureSolution.categorie = cat.categorie
+                meilleureSolution.attribut = att
+            }
+
+        });  
+    });
+
     // TODO: améliorer l'algo
-    let indexCat = Math.floor(Math.random() * categorie.categories.length);
-    let cat = categorie.categories[indexCat]
-    let att = categorie.categories[indexCat].attr[Math.floor(Math.random() * categorie.categories[indexCat].attr.length)]
-    return {categorie: cat, attribut: att, question: null}
+    return meilleureSolution
+}
+
+function calculateScore(listePokemon:Pokemon[], number:number){
+    let nb = Math.round(listePokemon.length/2);
+    let score = number-nb;
+    score=Math.abs(score)
+    return score;
+    console.log(score);
 }
 
 /**
@@ -76,54 +114,21 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
     }
 }
 
-export function ask_or_guess(){
-    /*
-    let possiblePokemon = pokemonData;
-    if (possiblePokemon.lenght ===1){
-        console.log(`Je pense a : ${possiblePokemon.lenght}`);
+export function ask_or_guess(listePokemon:Pokemon[]){
+    if (listePokemon.length ===1){
+        return "guess";
+        console.log("je pense à" + listePokemon.values)
     }
-    else if (possiblePokemon.lenght < 1){
+    else if (listePokemon.length < 1){
+        return "error"
         console.log("Je n'ai pas reussi à trouver ton pokémon");
     }
-
     else{
-        choosequest();
+        return "ask"
+        //getNextQuestion(listePokemon);
     }
-     */
-}
-/*
-export function buildquest(attribut:string, variable:string){
-    const question = jsonData[attribut].q + variable + " ?"
-    console.log(question)
-    return question;
 }
 
-export function choosequest(){
-
-    let questions = [];
-    for (const categorie in jsonData)
-        if (Object.prototype.hasOwnProperty.call(jsonData, categorie)) {
-            const data = jsonData[categorie];
-            const baseQuestion = data.q; // La question de base
-            
-
-            // Générer les questions avec les attributs (attr) s'ils existent
-            if (data.attr && Array.isArray(data.attr)) {
-                data.attr.forEach((valeur: string | number) => {
-                    questions.push(`${baseQuestion}${valeur}`);
-                });
-            } else {
-                // Si pas d'attributs, ajouter la question seule
-                questions.push(baseQuestion);
-            }
-        }
-    console.log(questions);
-    return questions;
+function guessPokemon(listePokemon:Pokemon[]){
+    return listePokemon[0]
 }
-
-// Appeler la fonction pour générer toutes les questions
-const allQuestions = choosequest();
-allQuestions.forEach((question, index) => {
-    console.log(`${index + 1}. ${question}`);
-});
-*/
