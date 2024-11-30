@@ -27,9 +27,9 @@ function count<T>(array: T[], value: T): number {
 function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
     let i = 0;
     let meilleureSolution = {
-        categorie: "",
+        categorie: { categorie: "", q: "", p: 0, attr: [] },
         attribut: "",
-        score: 0,
+        score: 200,
         question: "",
     }
     categorie.categories.forEach(cat => {
@@ -45,10 +45,11 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
             })
             // Le nombre de pok vaut i :
             let sc = calculateScore(possiblePokeList, i)
-            if (sc > meilleureSolution.score) {
+            if (sc < meilleureSolution.score) {
                 meilleureSolution.score = sc
-                meilleureSolution.categorie = cat.categorie
+                meilleureSolution.categorie.categorie = cat.categorie
                 meilleureSolution.attribut = att
+                meilleureSolution.categorie.q = cat.q
             }
 
         });  
@@ -73,6 +74,7 @@ function calculateScore(listePokemon:Pokemon[], number:number){
  */
 function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
     categorieAttributQuestion.question = categorieAttributQuestion.categorie.q + " " + categorieAttributQuestion.attribut + " ?"
+    console.log(categorieAttributQuestion.categorie.q)
 }
 
 /**
@@ -81,51 +83,38 @@ function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
  */
 export function getNextQuestion(possiblePokeList:Pokemon[]) {
     let attributs = getCategorieAndAttributeForQuestion(possiblePokeList)
+    console.log(attributs)
     buildQuestion(attributs)
     return attributs
 }
 
-function exclusPokemons(pokemonsAExclure: Pokemon[], pokeList1: Pokemon[], pokeList2: Pokemon[]) {
-    pokemonsAExclure.forEach((p:Pokemon) => {
-        const index = pokeList1.findIndex((pok: Pokemon) => pok.nom === p.nom);
-        if (index !== -1) {
-            pokeList1.splice(index, 1); // Supprime l'élément directement de la liste
-            pokeList2.push(p); // Ajoute l'élément dans l'autre liste
-        }
-    })
+function exclusPokemon(p: Pokemon, pokeList1: Pokemon[], pokeList2: Pokemon[]) {
+    pokeList2.push(p);
+    const index = pokeList1.findIndex((pok: Pokemon) => pok.nom === p.nom);
+    if (index !== -1) {
+        pokeList1.splice(index, 1); // Supprime l'élément directement de la liste
+    }
 }
 
 export function updateData(answer: string, question:CategorieAttribut, possiblePokemon:Pokemon[], impossiblePokemon:Pokemon[]) {
-    let aExclure:Pokemon[] = []
     if (answer === "oui") {
         //console.log(attributQuestCorrespondPokemon(question, possiblePokemon[0]))
         // For chaque pokemon, ça check si ça correspond, si ça correspond, le garde, sinon le jerte
         possiblePokemon.forEach((pok:Pokemon) => {
-            /*
-            console.log("Question:");
-            console.log(question);
-            console.log("Pokemon");
-            console.log(pok);
-            console.log("Correspondance");
-            console.log(attributQuestCorrespondPokemon(question, pok));
-            */
-            
             if (!attributQuestCorrespondPokemon(question, pok)) {
-                console.log("J'exclus " + pok.nom);
-                aExclure.push(pok)
+                exclusPokemon(pok, possiblePokemon, impossiblePokemon)
             }
         })
     } else if (answer === "non") {
         //console.log(!attributQuestCorrespondPokemon(question, possiblePokemon[0]))
         possiblePokemon.forEach((pok:Pokemon) => {
             if (attributQuestCorrespondPokemon(question, pok)) {
-                aExclure.push(pok)
+                exclusPokemon(pok, possiblePokemon, impossiblePokemon)
             }
         })
     } else {
         // Encore autre chose
     }
-    exclusPokemons(aExclure, possiblePokemon, impossiblePokemon)
 }
 
 export function ask_or_guess(listePokemon:Pokemon[]){
