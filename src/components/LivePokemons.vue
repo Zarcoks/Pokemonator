@@ -46,7 +46,6 @@ props.pokemons.forEach(pokemon => {
           </div>
           <div :class="{infos: true, hidden: pok.clicked}">
             <h5> Les informations</h5>
-            <span> numéro pokédex : {{ pok.pokedex }}</span>
             <span> type : {{pok.type}}</span>
             <span> phase chaine d'évolution : {{pok.nivEvolution}}</span>
             <span> poids : {{pok.poids}}</span>
