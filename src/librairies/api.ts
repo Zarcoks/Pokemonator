@@ -34,17 +34,22 @@ function getEvolutionNumber(chain: any, nomPokemon: string): number{
 //fonction pour récupérer les conditions d'évolution d'un pokemon
 function getEvolutionTrigger(chain: any, numEvolution : number): string | null {
     // 1ere evolution
+
     if(numEvolution === 2){
-        return chain.evolves_to
+         const trigger = chain.evolves_to
             .flatMap((evolution:any) => evolution.evolution_details
-                .map((detail:any) => detail.trigger.name))[0];
+                .map((detail:any) => detail.trigger.url))[0];
+         return trigger;
     }
     //2ere évolution
     else if(numEvolution === 3){
-        return chain.evolves_to
+        const trigger = chain.evolves_to
             .flatMap((evolution: any) => evolution.evolves_to
                 .flatMap((evo: any) => evo.evolution_details
-                    .map((detail: any) => detail.trigger.name)))[0];
+                    .map((detail: any) => detail.trigger.url)))[0];
+        console.log(trigger);
+        return trigger;
+
     }
     return null;
 }
@@ -106,12 +111,23 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
     const  reqEvolution :Response = await fetch (Species.evolution_chain.url);
     const evolution = await reqEvolution.json();
 
+    const reqColorFr: Response = await fetch (Species.color.url)
+    const colorFr= await reqColorFr.json();
+
+    const reqFormeFr : Response = await fetch (Species.shape.url);
+    const formeFr = await reqFormeFr.json();
+
+    const reqHabitatFr : Response = await fetch (Species.habitat.url);
+    const habitatFr = await reqHabitatFr.json();
+
     // appelle des fonctions ci dessus
     const nivEvolution : number = getEvolutionNumber(evolution.chain,data.name);
     const evenement : string | null = getEvolutionTrigger(evolution.chain,nivEvolution);
     const objetEvolution : string | null = getEvolutionItem(evolution.chain,nivEvolution);
     const nivEvolutionMin: number | null = getEvolutionlevelMin(evolution.chain,nivEvolution);
 
+    const reqEvenementFr : response = await fetch (evenement);
+    const evenementFr = await reqEvenementFr.json();
     // création en json du pokemon avec les données trié pour les questions
     const pokemon: Pokemon = {
 
@@ -123,10 +139,18 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
             name.language.name === "fr"
         )?.name,
         type : data.types.map((typeObj:any) => typeObj.type.name).join(', '), // type est un tableau donc on utilise la fonction map pour cherhcer dedans
-        couleur : Species.color.name,
-        habitat : Species.habitat.name,
-        forme : Species.shape.name,
-        evenement: evenement,
+        couleur : colorFr.names.find((name: {name : string; language: { name: string } }) =>
+            name.language.name === "fr"
+        )?.name,
+        habitat : habitatFr.names.find((name : {name : string; language : {name : string}} ) =>
+            name.language.name=== "fr"
+        )?.name,
+        forme : formeFr.names.find((name: { name : string; language: { name: string } }) =>
+            name.language.name === "fr"
+        )?.name,
+        evenement: evenementFr.names.find((name : {name : string; language : {name : string}}) =>
+            name.language.name === "fr"
+        )?.name,
         bebe : Species.is_baby,
         legendaire : Species.is_legendary,
         mythique : Species.is_mythical,
@@ -134,6 +158,6 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
         image : data.sprites.front_default,
         nivEvolutionMin : nivEvolutionMin,
     }
-        //console.log(pokemon);
+        console.log(pokemon);
     return pokemon;
 }
