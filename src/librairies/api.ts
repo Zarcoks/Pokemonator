@@ -120,6 +120,9 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
     const reqHabitatFr : Response = await fetch (Species.habitat.url);
     const habitatFr = await reqHabitatFr.json();
 
+    /*const reqTypeFr : response = await fetch (data.types.map((typeObj:any) => typeObj.type.name));
+    const typeFr = await reqTypeFr.json();*/
+
     // appelle des fonctions ci dessus
     const nivEvolution : number = getEvolutionNumber(evolution.chain,data.name);
     const evenement : string | null = getEvolutionTrigger(evolution.chain,nivEvolution);
@@ -129,6 +132,23 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
     const reqEvenementFr : response = await fetch (evenement);
     const evenementFr = await reqEvenementFr.json();
     // création en json du pokemon avec les données trié pour les questions
+
+    // Récupérer les noms des types en français
+    const typeFrList: (Awaited<any>)  = await Promise.all(
+        data.types.map(async (typeObj: any) => {
+            // Effectuer une requête pour chaque type
+            const reqTypeFr: Response = await fetch(`https://pokeapi.co/api/v2/type/${typeObj.type.name}`);
+            const typeDataFr = await reqTypeFr.json();
+            // Trouver le nom en français
+            return typeDataFr.names.find((name: { name: string; language: { name: string } }) =>
+                name.language.name === "fr"
+            )?.name;
+        })
+    );
+    // Combiner les types en une seule chaîne
+    const typeFr : string = typeFrList.filter(Boolean).join(', ');
+
+
     const pokemon: Pokemon = {
 
         pokedex : data.id,
@@ -138,7 +158,7 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
         nom: Species.names.find((name: { name: string; language: { name: string } }) =>
             name.language.name === "fr"
         )?.name,
-        type : data.types.map((typeObj:any) => typeObj.type.name).join(', '), // type est un tableau donc on utilise la fonction map pour cherhcer dedans
+        type : typeFr,
         couleur : colorFr.names.find((name: {name : string; language: { name: string } }) =>
             name.language.name === "fr"
         )?.name,
