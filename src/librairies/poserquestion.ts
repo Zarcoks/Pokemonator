@@ -124,7 +124,7 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
 
 export function ask_or_guess(listePokemon:Pokemon[]){
     if (listePokemon.length ===1){
-        return "guess";
+        
         console.log("je pense à" + listePokemon.values)
     }
     else if (listePokemon.length < 1){
