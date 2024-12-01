@@ -93,7 +93,6 @@ props.pokemons.forEach(pokemon => {
       align-items: center;
       background-color: rgb(230, 230, 230);
       border-bottom: solid 1px #ccc;
-      width: 100%;
       padding: 10px;
       transition: all 200ms ease-out;
     }
@@ -117,9 +116,7 @@ props.pokemons.forEach(pokemon => {
     .infos > span {
       display: block;
       padding: 5px;
-      width: 100%;
     }
-
 
     article:hover {
       background-color: rgb(252, 252, 252);
@@ -128,9 +125,4 @@ props.pokemons.forEach(pokemon => {
     .grised {
         background-color: rgb(105, 105, 105);
     }
-
-    #pokemons > div::-webkit-scrollbar {
-      display: none;
-    }
-
 </style>
