@@ -13,7 +13,6 @@
             <div id="buttons">
                 <button @click="$emit('oui')">Oui</button>
                 <button @click="$emit('non')">Non</button>
-                <button @click="$emit('jsp')">Je ne sais pas</button>
             </div>
         </div>
     </div>
