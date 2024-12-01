@@ -1,6 +1,8 @@
 import categorie from "@/json/dataQuestions.json"
 import type { Pokemon } from "./api";
 import { attributQuestCorrespondPokemon } from "./dataManagement";
+import Guesser from '../components/Guesser.vue';
+import App from '../App.vue';
 
 interface Categorie {
     categorie: string,
@@ -124,7 +126,7 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
 
 export function ask_or_guess(listePokemon:Pokemon[]){
     if (listePokemon.length ===1){
-        
+        isGuessing = true;
         console.log("je pense à" + listePokemon.values)
     }
     else if (listePokemon.length < 1){
