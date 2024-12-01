@@ -16,7 +16,7 @@
       "categorie": "Poids",
       "q": "Ton Pokémon est-il ",
       "p": 1,
-      "attr": ["lourd (kg)", "de poids moyen (kg)", "léger (kg)"]
+      "attr": ["lourd (plus de 30 kg)", "de poids moyen (entre 10 et 30 kg)", "léger (moins de 10 kg)"]
     },
     {
       "categorie": "Taille",
