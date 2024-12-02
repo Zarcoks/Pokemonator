@@ -22,7 +22,7 @@
       "categorie": "Taille",
       "q": "Ton Pokémon est-il ",
       "p": 1,
-      "attr": ["grand (cm)", "de taille moyenne (cm)", "petit (cm)"]
+      "attr": ["grand (plus de 150 cm)", "de taille moyenne (entre 50 et 150 cm)", "petit (moins de 50 cm)"]
     },
     {
       "categorie": "Couleur",

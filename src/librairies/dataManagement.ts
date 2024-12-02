@@ -29,8 +29,8 @@ function equivalentPoids(pokemon:Pokemon, poids: string) {
 }
 
 function equivalentTaille(pokemon: Pokemon, taille: string) {
-    if (taille === "grand (cm)") return pokemon.taille >= 15;
-    else if (taille === "de taille moyenne (cm)") return pokemon.taille >= 5;
+    if (taille === "grand (plus de 150 cm)") return pokemon.taille >= 15;
+    else if (taille === "de taille moyenne (entre 50 et 150 cm)") return pokemon.taille >= 5;
     else return pokemon.taille < 5;
 }
 
