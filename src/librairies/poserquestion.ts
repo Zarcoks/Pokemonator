@@ -68,7 +68,6 @@ function calculateScore(listePokemon:Pokemon[], number:number){
     let score = number-nb;
     score=Math.abs(score)
     return score;
-    console.log(score);
 }
 
 /**
@@ -78,7 +77,7 @@ function calculateScore(listePokemon:Pokemon[], number:number){
  */
 function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
     categorieAttributQuestion.question = categorieAttributQuestion.categorie.q + " " + categorieAttributQuestion.attribut + " ?"
-    console.log(categorieAttributQuestion.categorie.q)
+    //console.log(categorieAttributQuestion.categorie.q)
 }
 
 /**
@@ -87,7 +86,7 @@ function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
  */
 export function getNextQuestion(possiblePokeList:Pokemon[]) {
     let attributs = getCategorieAndAttributeForQuestion(possiblePokeList)
-    console.log(attributs)
+    //console.log(attributs)
     buildQuestion(attributs)
     return attributs
 }
@@ -127,14 +126,14 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
 }
 
 export function ask_or_guess(listePokemon:Pokemon[]){
-    console.log(listePokemon.length)
+    //console.log(listePokemon.length)
     if (listePokemon.length ===1){
         Vue.isGuessing = true;
-        console.log("je pense à" + listePokemon)
+        //console.log("je pense à" + listePokemon)
     }
     else if (listePokemon.length < 1){
         return "error"
-        console.log("Je n'ai pas reussi à trouver ton pokémon");
+        //console.log("Je n'ai pas reussi à trouver ton pokémon");
     }
     else{
         return "ask"

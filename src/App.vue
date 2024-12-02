@@ -3,11 +3,12 @@
     import Personnage from './components/Personnage.vue';
     import LivePokemons from './components/LivePokemons.vue';
     import { computed, ref } from 'vue';
-    import type {Pokemon} from "@/librairies/api"
+    import {Pokemon} from "@/librairies/api"
     import pokemons from "@/json/pokemons.json"
     import { getNextQuestion, updateData } from './librairies/poserquestion';
     import Guesser from './components/Guesser.vue';
-    let workingOnPokemons = ref(pokemons) // La liste de tous les pokemons à modifier
+    
+    let workingOnPokemons = ref([...pokemons]) // La liste de tous les pokemons à modifier
     let impossiblePokemons = ref(new Array<Pokemon>()) // La liste des pokemons éliminés par les questions
     let question = ref(getNextQuestion(workingOnPokemons.value)); // La question loadé dynamiquement
 
@@ -17,7 +18,9 @@
     let isLoosing = ref(false)
 
     function replay() {
-
+        impossiblePokemons.value = new Array<Pokemon>()
+        workingOnPokemons.value = [...pokemons]
+        updateState()
     }
 
     function allFalse() {
@@ -30,7 +33,7 @@
         question.value = getNextQuestion(workingOnPokemons.value)
         if (workingOnPokemons.value.length === 1) {
             allFalse()
-            isGuessing.value = true
+            isGuessing.value = true            
         }
         else if (workingOnPokemons.value.length < 1){
             allFalse()
@@ -38,7 +41,7 @@
         }
         else if (workingOnPokemons.value.length > 1) {
             allFalse()
-            isAsking.value = true;
+            isAsking.value = true;            
         } 
     }
 </script>

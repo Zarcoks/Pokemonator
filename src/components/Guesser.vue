@@ -10,6 +10,9 @@ let isMain = ref(true)
 let isWon = ref(false)
 let isLose = ref(false)
 
+let loserImg =  ref(new URL('../assets/profChenenpls.png', import.meta.url).href)
+let winnerImg =  ref(new URL('../assets/winner.png', import.meta.url).href)
+
 function onYes() {
   isMain.value = false
   isWon.value = true
@@ -20,11 +23,18 @@ function onNo() {
   isWon.value = false
   isLose.value = true
 }
+
+function replay() {
+  isMain.value = true
+  isWon.value = false
+  isLose.value = false
+  props.replay() 
+}
 </script>
 
 <template>
   <div :class="{hidden: !isMain}">
-    <h1>Penses-tu a {{ pokemons[0].nom }} ?</h1>
+    <h1>Penses - tu a {{ pokemons[0].nom }} ?</h1>
     <div id="whole">
       <button @click="onYes()">Oui</button>
       <div id="guessingPokemon">
@@ -35,7 +45,11 @@ function onNo() {
   </div>
   
   <div :class="{hidden: !isWon}">
-    <Replay :callback="props.replay" :won="isWon" />
+    <Replay :callback="replay" :src="winnerImg" :message="'Ton pokemon était ' + props.pokemons[0].nom + ' !'"/>
+  </div>
+  
+  <div :class="{hidden: !isLose}">
+    <Replay :callback="replay" :src="loserImg" :message="'Mince! Je n\'ai pas trouvé ton pokemon...'"/>
   </div>
 </template>
 

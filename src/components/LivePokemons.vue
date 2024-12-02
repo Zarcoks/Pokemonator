@@ -48,15 +48,15 @@ props.pokemons.forEach(pokemon => {
             <h5> Les informations</h5>
             <span> type : {{pok.type}}</span>
             <span> phase chaine d'évolution : {{pok.nivEvolution}}</span>
-            <span> poids : {{pok.poids}}</span>
-            <span> taille : {{pok.taille}}</span>
+            <span> poids : {{pok.poids/10}} kg</span>
+            <span> taille : {{pok.taille*10}} cm</span>
             <span> couleur : {{pok.couleur}}</span>
             <span> bebe : {{pok.bebe}}</span>
-            <span> legendaire : {{pok.legendaire}}</span>
-            <span> mythique : {{pok.mythique}}</span>
+            <span> legendaire : {{pok.legendaire ? "oui" : "non"}}</span>
+            <span> mythique : {{pok.mythique ? "oui" : "non"}}</span>
             <span> habitat : {{pok.habitat}}</span>
             <span> forme : {{pok.forme}}</span>
-            <span> évènement : {{pok.evenement}}</span>
+            <span> évènement : {{pok.evenement ?? "Aucun"}}</span>
             <span> Objet pour évoluer : {{pok.objetEvoltution ?? "non"}}</span>
           </div>
         </article>
