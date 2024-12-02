@@ -80,7 +80,6 @@ function calculateScore(listePokemon:Pokemon[], number:number){
     let score = number-nb;
     score=Math.abs(score)
     return score;
-    console.log(score);
 }
 
 /**
@@ -90,7 +89,7 @@ function calculateScore(listePokemon:Pokemon[], number:number){
  */
 function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
     categorieAttributQuestion.question = categorieAttributQuestion.categorie.q + " " + categorieAttributQuestion.attribut + " ?"
-    console.log(categorieAttributQuestion.categorie.q)
+    //console.log(categorieAttributQuestion.categorie.q)
 }
 
 /**
@@ -100,7 +99,7 @@ function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
 export function getNextQuestion(possiblePokeList:Pokemon[],isGuessing: boolean) {
 
     let attributs = getCategorieAndAttributeForQuestion(possiblePokeList)
-    console.log(attributs)
+    //console.log(attributs)
     buildQuestion(attributs)
     return attributs
 

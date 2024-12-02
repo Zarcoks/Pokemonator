@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const props = defineProps<{callback: Function, won: boolean}>();
-let src = props.won ? new URL('@/assets/chen-akinator.png', import.meta.url).href : ""
+const props = defineProps<{callback: Function, src: string, message: string}>();
 </script>
 
 <template>
     <div id="container">
-      <img :src="src" alt="">
+      <img :src="props.src" alt="">
       <div>
+        <h3>{{ props.message }}</h3>
         <h1>Merci d'avoir joué !</h1>
         <h3>Veux-tu rejouer ?</h3>
         <button @click="callback()">Rejouer !</button>
@@ -19,14 +19,11 @@ let src = props.won ? new URL('@/assets/chen-akinator.png', import.meta.url).hre
     height: 80vh;
  }
 
- h1 {
-    text-align: center;
- }
-
  #container {
     width: 80vw;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 20px;
  }
 </style>
