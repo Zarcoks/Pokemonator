@@ -17,8 +17,8 @@ function rareteEquivalente(pokemon: Pokemon, rareteQuestion:string) {
 }
 
 function typeEvolutionEquivalent(pokemon: Pokemon, typeEvolutionQuestion: string) {
-    if (typeEvolutionQuestion === "d'une montée de niveau") return pokemon.evenement === "level-up"
-    else if (typeEvolutionQuestion === "d'un échange") return pokemon.evenement === "trade"
+    if (typeEvolutionQuestion === "de montée de niveau") return pokemon.evenement === "level-up"
+    else if (typeEvolutionQuestion === "d'être échangé") return pokemon.evenement === "trade"
     else return pokemon.objetEvoltution !== null;
 }
 
@@ -45,7 +45,7 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
     // Une partie classique et une partie sensible
     // Partie data classique (ni l'attribut ni la catégorie):
     if (!(sensibleCategories.includes(cat.categorie.categorie))) {
-        let attributPokemon = pokemon[getCategorieEquivalente(cat.categorie.categorie)] // l'erreur c'est le type car il est pas sur que ton string soit une clé du tab
+        let attributPokemon:string = pokemon[getCategorieEquivalente(cat.categorie.categorie)].toString() // l'erreur c'est le type car il est pas sur que ton string soit une clé du tab
         let attributQuestion = getAttributEquivalent(cat.attribut) // idem
 
        /*
@@ -57,13 +57,14 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
         console.log(attributQuestion);
         console.log("----------------------");
         */
+        let tab = attributPokemon.split(', ')
         
-        if (Array.isArray(attributPokemon)) {
+        if (tab.length > 1) {
             // Cas où les pokemons ont plusieurs valeurs dans la catégorie (ex: type = [grass, poison])
-            return attributPokemon.includes(attributQuestion)
+            return tab.includes(attributQuestion)
         }
         // Cas où l'attribut pokemon n'est pas un tableau
-        return attributPokemon == attributQuestion
+        return tab[0] == attributQuestion
     }
     // Partie data sensible:
     else {

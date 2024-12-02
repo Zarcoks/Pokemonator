@@ -86,6 +86,9 @@
         <div :class="{hidden: !isGuessing}">
             <Guesser :pokemons="workingOnPokemons" :replay="replay"/>
         </div>
+        <div :class="{hidden: !isLoosing}">
+            
+        </div>
     </main>
 </template>
 
