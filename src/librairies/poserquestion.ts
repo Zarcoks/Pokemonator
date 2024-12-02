@@ -49,7 +49,6 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
             })
             // Le nombre de pok vaut i :
             let sc = calculateScore(possiblePokeList, i)
-            console.log(sc);
             
             if (sc < meilleureSolution.score) {
                 meilleureSolution.score = sc
@@ -66,7 +65,7 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
 }
 
 function calculateScore(listePokemon:Pokemon[], number:number){
-    let nb = Math.round(listePokemon.length/2);
+    let nb = listePokemon.length/2;
     let score = number-nb;
     score=Math.abs(score)
     return score;
