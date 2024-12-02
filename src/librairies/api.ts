@@ -52,7 +52,7 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
                 meilleureSolution.categorie.q = cat.q
             }
 
-        });  
+        });
     });
 
     // TODO: améliorer l'algo
@@ -68,7 +68,7 @@ function calculateScore(listePokemon:Pokemon[], number:number){
 }
 
 /**
- * 
+ *
  * @param attribut Prend en paramètre un objet avec "categorie" et "attribut" et retourne une chaine
  * avec une question compréhensible
  */
@@ -79,7 +79,7 @@ function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
 
 /**
  * Retourne un string qui contient la question à poser.
- * @param possiblePokeList 
+ * @param possiblePokeList
  */
 export function getNextQuestion(possiblePokeList:Pokemon[]) {
     let attributs = getCategorieAndAttributeForQuestion(possiblePokeList)
@@ -99,32 +99,29 @@ function exclusPokemon(pokemonElimines: Pokemon[], pokeList1: Pokemon[], pokeLis
     })
 }
 
-export function updateData(answer: string, question:CategorieAttribut, possiblePokemon:Pokemon[], impossiblePokemon:Pokemon[]) {
-    let pokemonElimines:Pokemon[] = []
-    if (answer === "oui") {
-        //console.log(attributQuestCorrespondPokemon(question, possiblePokemon[0]))
-        // For chaque pokemon, ça check si ça correspond, si ça correspond, le garde, sinon le jerte
-        possiblePokemon.forEach((pok:Pokemon) => {
-            if (!attributQuestCorrespondPokemon(question, pok)) {
-                pokemonElimines.push(pok)
-            }
-        })
-    } else if (answer === "non") {
-        //console.log(!attributQuestCorrespondPokemon(question, possiblePokemon[0]))
-        possiblePokemon.forEach((pok:Pokemon) => {
-            if (attributQuestCorrespondPokemon(question, pok)) {
-                pokemonElimines.push(pok)
-            }
-        })
-    } else {
-        // Encore autre chose
+// récupère le niveau minimal pour l'évolution
+function getEvolutionlevelMin(chain:any, numEvolution : number) : number | null{
+    //1ere évolution
+    if(numEvolution === 2 ){
+        const level = chain.evolves_to
+            .flatMap((evolution:any) => evolution.evolution_details
+                .map((detail:any) => detail.min_level))[0]
+        return level || null;
+    }
+    //2ere évolution
+    if(numEvolution === 3){
+        const level = chain.evolves_to
+            .flatMap((evolution:any) => evolution.evolves_to
+                .flatMap((evo:any) => evo.evolution_details
+                    .map((detail:any) => detail.min_level)))[0]
+        return level || null;
     }
     exclusPokemon(pokemonElimines, possiblePokemon, impossiblePokemon)
 }
 
 export function ask_or_guess(listePokemon:Pokemon[]){
     if (listePokemon.length ===1){
-        
+
         console.log("je pense à" + listePokemon.values)
     }
     else if (listePokemon.length < 1){
