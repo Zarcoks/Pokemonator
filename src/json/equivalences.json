@@ -59,8 +59,8 @@
         "humanoïde": "humanoid",
         "d'ailes d'insecte": "bug-wings",
         "d'armure": "armor",
-        "1": 1,
-        "2": 2,
-        "3": 3
+        "1": "1",
+        "2": "2",
+        "3": "3"
     }
 }

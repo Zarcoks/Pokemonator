@@ -49,6 +49,8 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
             })
             // Le nombre de pok vaut i :
             let sc = calculateScore(possiblePokeList, i)
+            console.log(sc);
+            
             if (sc < meilleureSolution.score) {
                 meilleureSolution.score = sc
                 meilleureSolution.categorie.categorie = cat.categorie

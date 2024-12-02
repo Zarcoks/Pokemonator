@@ -4,7 +4,7 @@
       "categorie": "Type",
       "q": "Ton Pokémon est-il de type ",
       "p": 1,
-      "attr" : ["normal", "combat","vol", "poison","sol","roche","insecte","spectre","acier","feu","eau","plante","electrik","psy","glace","dragon","ténèbres" ,"fée","stellaire"]
+      "attr" : ["normal", "combat","vol","poison","sol","roche","insecte","spectre","acier","feu","eau","plante","electrik","psy","glace","dragon","ténèbres" ,"fée","stellaire"]
     },
     {
       "categorie": "Evolution",
