@@ -23,7 +23,6 @@ function typeEvolutionEquivalent(pokemon: Pokemon, typeEvolutionQuestion: string
 }
 
 function equivalentPoids(pokemon:Pokemon, poids: string) {
-    console.log(pokemon.poids/10>=30)
     if (poids === "lourd (plus de 30 kg)") return pokemon.poids/10 >= 30;
     else if (poids === "de poids moyen (entre 10 et 30 kg)") return pokemon.poids/10 >= 10;
     else return pokemon.poids < 10;

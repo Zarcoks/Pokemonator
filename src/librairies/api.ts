@@ -55,23 +55,42 @@ function getEvolutionTrigger(chain: any, numEvolution : number): string | null {
 }
 
 // retourne l'objet utiliser pour évoluer ou null si il y en a pas
-function getEvolutionItem(chain:any, numEvolution : number) : string | null{
-    //1ere évolution
-    if(numEvolution === 2 ){
-        const item : string = chain.evolves_to
-            .flatMap((evolution:any) => evolution.evolution_details
-                .map((detail:any) => detail.item?.name))[0]  // ? = si item est null empèche de faire une erreure
-        return item || null;
+async function getEvolutionItem(chain: any, numEvolution: number): string | null {
+
+    let itemName: string | null = null;
+
+    // Première évolution
+    if (numEvolution === 2) {
+        itemName = chain.evolves_to
+            .flatMap((evolution: any) => evolution.evolution_details
+                .map((detail: any) => detail.item?.name))[0] || null;
     }
-    //2ere évolution
-    if(numEvolution === 3){
-        const item : string = chain.evolves_to
-            .flatMap((evolution:any) => evolution.evolves_to
-                .flatMap((evo:any) => evo.evolution_details
-                    .map((detail:any) => detail.item?.name)))[0]
-        return item || null;
+    // Deuxième évolution
+    else if (numEvolution === 3) {
+        itemName = chain.evolves_to
+            .flatMap((evolution: any) => evolution.evolves_to
+                .flatMap((evo: any) => evo.evolution_details
+                    .map((detail: any) => detail.item?.name)))[0] || null;
     }
-    return null;
+
+    // Si aucun objet n'est requis
+    if (!itemName) return null;
+
+    // Récupération des traductions pour l'objet
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/item/${itemName}`);
+        const itemData = await response.json();
+
+        // Chercher le nom en français
+        const itemNameFr = itemData.names.find(
+            (nameObj: { name: string; language: { name: string } }) => nameObj.language.name === "fr"
+        )?.name;
+
+        return itemNameFr || itemName; // Retourne le nom en français ou le nom original si introuvable
+    } catch (error) {
+        console.error(`Erreur lors de la récupération de l'objet ${itemName}:`, error);
+        return itemName; // Retourne le nom original en cas d'erreur
+    }
 }
 
 // récupère le niveau minimal pour l'évolution
