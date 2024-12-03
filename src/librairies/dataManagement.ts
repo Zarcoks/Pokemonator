@@ -88,3 +88,18 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
         }
     }
 }
+/*
+function arePokemonAllTheSame(pokemon1: Pokemon, pokemon2: Pokemon) {
+    if (pokemon1.bebe !== pokemon2.bebe) return false;
+    if (pokemon1.couleur !== pokemon2.couleur) return false;
+    if (pokemon1.evenement !== pokemon2.evenement) return false;
+    if (pokemon1.forme !== pokemon2.forme) return false;
+    if (pokemon1.habitat !== pokemon2.forme) return false;
+    if (pokemon1.legendaire !== pokemon2.legendaire) return false;
+    if (pokemon1.mythique !== pokemon2.mythique) return false;
+    if (pokemon1.nivEvolution !== pokemon2.nivEvolution) return false;
+    if (pokemon1.nivEvolutionMin !== pokemon2.nivEvolutionMin) return false;
+    if (pokemon1.objetEvoltution !== pokemon2.objetEvoltution) return false;
+    if ()
+}
+    */

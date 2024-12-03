@@ -59,8 +59,6 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
 
         });  
     });
-
-    // TODO: améliorer l'algo
     return meilleureSolution
 }
 
@@ -89,6 +87,7 @@ export function getNextQuestion(possiblePokeList:Pokemon[]) {
     let attributs = getCategorieAndAttributeForQuestion(possiblePokeList)
     //console.log(attributs)
     buildQuestion(attributs)
+    if (attributs.score === possiblePokeList.length/2) return null;
     return attributs
 }
 

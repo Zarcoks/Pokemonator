@@ -2,8 +2,8 @@
     import toolbar from './components/Toolbar.vue';
     import Personnage from './components/Personnage.vue';
     import LivePokemons from './components/LivePokemons.vue';
-    import { computed, ref } from 'vue';
-    import {Pokemon} from "@/librairies/api"
+    import { ref } from 'vue';
+    import {type Pokemon} from "@/librairies/api"
     import pokemons from "@/json/pokemons.json"
     import { getNextQuestion, updateData } from './librairies/poserquestion';
     import Guesser from './components/Guesser.vue';
@@ -18,7 +18,6 @@
     let isNotStarted = ref(true)
     let isGuessing = ref(false)
     let isAsking = ref(false)
-    let isLoosing = ref(false)
 
     function start() {
         allFalse()
@@ -35,22 +34,19 @@
         isNotStarted.value = false
         isGuessing.value = false
         isAsking.value = false
-        isLoosing.value = false
     } 
 
     function updateState() {
-        question.value = getNextQuestion(workingOnPokemons.value)
-        if (workingOnPokemons.value.length === 1) {
+        let nextQuestion = getNextQuestion(workingOnPokemons.value)
+        if (nextQuestion !== null) question.value = nextQuestion
+        
+        if (nextQuestion === null || workingOnPokemons.value.length === 1) {
             allFalse()
             isGuessing.value = true            
         }
         else if (workingOnPokemons.value.length === pokemons.length) {
             allFalse()
             isNotStarted.value = true
-        }
-        else if (workingOnPokemons.value.length < 1){
-            allFalse()
-            isLoosing.value = true
         }
         else if (workingOnPokemons.value.length > 1) {
             allFalse()
@@ -86,9 +82,6 @@
         </div>
         <div :class="{hidden: !isGuessing}">
             <Guesser :pokemons="workingOnPokemons" :replay="replay"/>
-        </div>
-        <div :class="{hidden: !isLoosing}">
-            
         </div>
     </main>
 </template>
