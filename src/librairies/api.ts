@@ -129,8 +129,12 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
     const objetEvolution : string | null = getEvolutionItem(evolution.chain,nivEvolution);
     const nivEvolutionMin: number | null = getEvolutionlevelMin(evolution.chain,nivEvolution);
 
-    const reqEvenementFr : response = await fetch (evenement);
-    const evenementFr = await reqEvenementFr.json();
+    let evenementFr = null;
+    if (evenement !== null) {
+        const reqEvenementFr : Response = await fetch (evenement);
+        const evenementFr = await reqEvenementFr.json();
+    }
+    
     // création en json du pokemon avec les données trié pour les questions
 
     // Récupérer les noms des types en français
@@ -168,7 +172,7 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
         forme : formeFr.names.find((name: { name : string; language: { name: string } }) =>
             name.language.name === "fr"
         )?.name,
-        evenement: evenementFr.names.find((name : {name : string; language : {name : string}}) =>
+        evenement: evenementFr === null ? "" : evenementFr.names.find((name : {name : string; language : {name : string}}) =>
             name.language.name === "fr"
         )?.name,
         bebe : Species.is_baby,

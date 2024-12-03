@@ -3,17 +3,18 @@
     import Personnage from './components/Personnage.vue';
     import LivePokemons from './components/LivePokemons.vue';
     import { ref } from 'vue';
-    import {type Pokemon} from "@/librairies/api"
+    import {getPokemon, type Pokemon} from "@/librairies/api"
     import pokemons from "@/json/pokemons.json"
     import { getNextQuestion, updateData } from './librairies/poserquestion';
     import Guesser from './components/Guesser.vue';
+    import { listPokemon } from './librairies/listPokemon';
     
     let imgProfesseur = ref(new URL('./assets/chen-akinator.png', import.meta.url).href)
 
     let workingOnPokemons = ref([...pokemons]) // La liste de tous les pokemons à modifier
     let impossiblePokemons = ref(new Array<Pokemon>()) // La liste des pokemons éliminés par les questions
     let question = ref(getNextQuestion(workingOnPokemons.value)); // La question loadé dynamiquement
-
+    
     // Variables d'état, pour déterminer quel composant est à afficher (une seule à la fois)
     let isNotStarted = ref(true)
     let isGuessing = ref(false)
