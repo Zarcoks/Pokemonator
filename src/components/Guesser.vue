@@ -34,7 +34,7 @@ function replay() {
 
 <template>
   <div :class="{hidden: !isMain}">
-    <h1>Penses - tu a {{ pokemons[0].nom }} ?</h1>
+    <h1>Penses - tu à {{ pokemons[0].nom }} ?</h1>
     <div id="whole">
       <button @click="onYes()">Oui</button>
       <div id="guessingPokemon">

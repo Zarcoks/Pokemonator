@@ -37,35 +37,26 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
         score: 200,
         question: "",
     }
-    if(possiblePokeList.length===1){
-        meilleureSolution = {
-            categorie: { categorie: "", q: "", p: 0, attr: [] },
-            attribut: "",
-            score: 200,
-            question: "",
-        }
-    }
-    else{ 
-        categorie.categories.forEach(cat => {
-            cat.attr.forEach(att => {
-                i = 0
-                possiblePokeList.forEach(pokemon => {
-                    let obj = {
-                        categorie: cat,
-                        attribut: att,
-                        question: null
-                    }
-                    if (attributQuestCorrespondPokemon(obj , pokemon)) i++;
-                })
-                // Le nombre de pok vaut i :
-                let sc = calculateScore(possiblePokeList, i)
-                if (sc < meilleureSolution.score) {
-                    meilleureSolution.score = sc
-                    meilleureSolution.categorie.categorie = cat.categorie
-                    meilleureSolution.attribut = att
-                    meilleureSolution.categorie.q = cat.q
+    categorie.categories.forEach(cat => {
+        cat.attr.forEach(att => {
+            i = 0
+            possiblePokeList.forEach(pokemon => {
+                let obj = {
+                    categorie: cat,
+                    attribut: att,
+                    question: null
                 }
+                if (attributQuestCorrespondPokemon(obj , pokemon)) i++;
+            })
+            // Le nombre de pok vaut i :
+            let sc = calculateScore(possiblePokeList, i)
             
+            if (sc < meilleureSolution.score) {
+                meilleureSolution.score = sc
+                meilleureSolution.categorie.categorie = cat.categorie
+                meilleureSolution.attribut = att
+                meilleureSolution.categorie.q = cat.q
+            }
 
             });  
         });

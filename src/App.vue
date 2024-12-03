@@ -75,7 +75,8 @@
         <div :class="{hidden: !isAsking}">
             <Personnage :question="question"
                 @oui="updateData('oui', question, workingOnPokemons, impossiblePokemons), updateState()"
-                @non="updateData('non', question, workingOnPokemons, impossiblePokemons), updateState()">
+                @non="updateData('non', question, workingOnPokemons, impossiblePokemons), updateState()"
+                @replay="replay()">
                 {{ question.question }}
             </Personnage>
         </div>
