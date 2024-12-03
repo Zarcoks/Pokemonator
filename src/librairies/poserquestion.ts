@@ -44,7 +44,6 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
             score: 200,
             question: "",
         }
-
     }
     else{ 
         categorie.categories.forEach(cat => {
@@ -76,7 +75,7 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
 }
 
 function calculateScore(listePokemon:Pokemon[], number:number){
-    let nb = Math.round(listePokemon.length/2);
+    let nb = listePokemon.length/2;
     let score = number-nb;
     score=Math.abs(score)
     return score;
