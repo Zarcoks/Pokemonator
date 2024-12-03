@@ -1,5 +1,4 @@
 import categorie from "@/json/dataQuestions.json"
-import type { Pokemon } from "./api";
 import { attributQuestCorrespondPokemon } from "./dataManagement";
 
 interface Categorie {

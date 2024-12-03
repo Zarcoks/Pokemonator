@@ -58,9 +58,9 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
                 meilleureSolution.categorie.q = cat.q
             }
 
-            });  
-        });
-    }
+        });  
+    });
+    
     // TODO: améliorer l'algo
     return meilleureSolution
 }
