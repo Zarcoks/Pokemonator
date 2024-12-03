@@ -23,14 +23,18 @@ function typeEvolutionEquivalent(pokemon: Pokemon, typeEvolutionQuestion: string
 }
 
 function equivalentPoids(pokemon:Pokemon, poids: string) {
-    if (poids === "lourd (plus de 30 kg)") return pokemon.poids/10 >= 30;
-    else if (poids === "de poids moyen (entre 10 et 30 kg)") return pokemon.poids/10 >= 10;
+    if (poids === "lourd (plus de 30 kg)") return pokemon.poids/10 > 30;
+    else if (poids === "de poids moyen (entre 10 et 30 kg)") return pokemon.poids/10 >= 10 && pokemon.poids/10 <= 30;
     else return pokemon.poids < 10;
 }
 
-function equivalentTaille(pokemon: Pokemon, taille: string) {
-    if (taille === "grand (plus de 150 cm)") return pokemon.taille >= 15;
-    else if (taille === "de taille moyenne (entre 50 et 150 cm)") return pokemon.taille >= 5;
+function equivalentTaille(pokemon: Pokemon, taille: string) {    
+    if (taille === "grand (plus de 150 cm)") {
+        return pokemon.taille > 15;
+    }
+    else if (taille === "de taille moyenne (entre 50 et 150 cm)") {
+        return pokemon.taille >= 5 && pokemon.taille <= 15;
+    }
     else return pokemon.taille < 5;
 }
 
@@ -57,6 +61,8 @@ export function attributQuestCorrespondPokemon(cat: CategorieAttribut, pokemon: 
         console.log(attributQuestion);
         console.log("----------------------");
         */
+
+
         let tab = attributPokemon.split(', ')
         
         if (tab.length > 1) {

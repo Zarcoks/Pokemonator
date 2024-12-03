@@ -95,7 +95,7 @@ export function getNextQuestion(possiblePokeList:Pokemon[]) {
 function exclusPokemon(pokemonElimines: Pokemon[], pokeList1: Pokemon[], pokeList2: Pokemon[]) {
     pokemonElimines.forEach((pok:Pokemon) => {
         for (let i = pokeList1.length-1; i>=0; i--) {
-            if (pokeList1[i].nom === pok.nom) {
+            if (pokeList1[i].pokedex === pok.pokedex) {
                 pokeList2.push(pok);
                 pokeList1.splice(i, 1); // Supprime l'élément directement de la liste
             }
@@ -117,6 +117,8 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
         //console.log(!attributQuestCorrespondPokemon(question, possiblePokemon[0]))
         possiblePokemon.forEach((pok:Pokemon) => {
             if (attributQuestCorrespondPokemon(question, pok)) {
+                //if (pok.nom === "Abo") console.log("Censé renvoyer false: " + attributQuestCorrespondPokemon(question, pok));
+                
                 pokemonElimines.push(pok)
             }
         })
