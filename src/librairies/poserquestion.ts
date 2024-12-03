@@ -50,8 +50,17 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
             })
             // Le nombre de pok vaut i :
             let sc = calculateScore(possiblePokeList, i)
-            
-            if (sc < meilleureSolution.score) {
+            console.log(sc)
+            if (sc == meilleureSolution.score){
+                let hasar = Math.round(Math.random())
+                if (hasar == 1){
+                    meilleureSolution.score = sc
+                    meilleureSolution.categorie.categorie = cat.categorie
+                    meilleureSolution.attribut = att
+                    meilleureSolution.categorie.q = cat.q
+                }
+            }
+            else if (sc < meilleureSolution.score) {
                 meilleureSolution.score = sc
                 meilleureSolution.categorie.categorie = cat.categorie
                 meilleureSolution.attribut = att
@@ -59,8 +68,7 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
             }
 
         });  
-    });
-    
+    });    
     // TODO: améliorer l'algo
     return meilleureSolution
 }
