@@ -132,7 +132,7 @@ export async function getPokemon(nameOrIndex: string | number) :Promise<Pokemon>
     let evenementFr = null;
     if (evenement !== null) {
         const reqEvenementFr : Response = await fetch (evenement);
-        const evenementFr = await reqEvenementFr.json();
+        evenementFr = await reqEvenementFr.json();
     }
     
     // création en json du pokemon avec les données trié pour les questions

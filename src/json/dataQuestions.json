@@ -28,7 +28,7 @@
       "categorie": "Couleur",
       "q": "Ton Pokémon est-il ",
       "p": 1,
-      "attr" : ["noir", "bleu","marron","gris","vert","rose","violet","rouge","blanc","jaune"]
+      "attr" : ["noir", "bleu","brun","gris","vert","rose","violet","rouge","blanc","jaune"]
     },
     {
       "categorie": "Rarete",
@@ -40,13 +40,13 @@
       "categorie": "Lieu",
       "q": "Ton Pokémon vit-il dans les ",
       "p": 1,
-      "attr" : ["caves", "forêts", "prairies", "montagnes", "milieux rares","milieux hostilles","mers","zones urbaines","marécages"]
+      "attr" : ["grottes", "forêts", "champs", "montagnes", "milieux rares","milieux hostilles","mers","zones urbaines","marécages"]
     },
     {
       "categorie": "Espece",
       "q": "Ton Pokémon a-t-il une forme",
       "p": 1,
-      "attr" : ["de balle","sinueuse","de poisson","de bras","de blob","droite","de jambes","de quadruped","d'ailes","de tentacules","de têtes","humanoïde","d'ailes d'insecte","d'armure"]
+      "attr" : ["de balle","sinueuse","de poisson","de bras","de goutte","droite","de jambes","de quadruped","d'ailes","de tentacules","de têtes","humanoïde","d'ailes d'insecte","d'armure"]
     },
     {
       "categorie": "TypeEvolution",

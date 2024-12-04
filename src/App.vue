@@ -8,7 +8,7 @@
     import { getNextQuestion, updateData } from './librairies/poserquestion';
     import Guesser from './components/Guesser.vue';
     import { listPokemon } from './librairies/listPokemon';
-    
+
     let imgProfesseur = ref(new URL('./assets/chen-akinator.png', import.meta.url).href)
 
     let workingOnPokemons = ref([...pokemons]) // La liste de tous les pokemons à modifier

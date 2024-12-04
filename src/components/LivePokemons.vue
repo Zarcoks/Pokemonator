@@ -51,12 +51,12 @@ props.pokemons.forEach(pokemon => {
             <span> poids : {{pok.poids/10}} kg</span>
             <span> taille : {{pok.taille*10}} cm</span>
             <span> couleur : {{pok.couleur}}</span>
-            <span> bebe : {{pok.bebe}}</span>
-            <span> legendaire : {{pok.legendaire ? "oui" : "non"}}</span>
+            <span> bébé : {{pok.bebe ? "oui" : "non"}}</span>
+            <span> légendaire : {{pok.legendaire ? "oui" : "non"}}</span>
             <span> mythique : {{pok.mythique ? "oui" : "non"}}</span>
             <span> habitat : {{pok.habitat}}</span>
             <span> forme : {{pok.forme}}</span>
-            <span> évènement : {{pok.evenement ?? "Aucun"}}</span>
+            <span> évènement : {{pok.evenement === "" ? "Aucun" : pok.evenement }}</span>
             <span> Objet pour évoluer : {{pok.objetEvoltution ?? "non"}}</span>
           </div>
         </article>
@@ -85,6 +85,10 @@ props.pokemons.forEach(pokemon => {
     img {
         width: 20%;
         margin: 5px;
+    }
+
+    span::first-letter {
+      text-transform:capitalize;
     }
 
     article {
