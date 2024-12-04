@@ -63,8 +63,8 @@
             <div>
                 <img :src="imgProfesseur" alt="">
                 <div>
-                    <h1>Bienvenue sur Pokemonator !</h1>
-                    <p>Pensez à un pokemon, et quand vous êtes prêt, appuyez sur 'commencer' !</p>
+                    <h1>Bienvenue sur Pokémonator !</h1>
+                    <p>Pensez à un pokémon, et quand vous êtes prêt, appuyez sur "commencer" !</p>
                     <button @click="start">Commencer !</button>
                 </div>
             </div>
