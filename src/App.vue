@@ -7,9 +7,8 @@
     import pokemons from "@/json/pokemons.json"
     import { getNextQuestion, updateData } from './librairies/poserquestion';
     import Guesser from './components/Guesser.vue';
+    import { listPokemon } from './librairies/listPokemon';
 
-
-    
     let imgProfesseur = ref(new URL('./assets/chen-akinator.png', import.meta.url).href)
 
     let workingOnPokemons = ref([...pokemons]) // La liste de tous les pokemons à modifier
@@ -37,12 +36,13 @@
         isNotStarted.value = false
         isGuessing.value = false
         isAsking.value = false
-        isLoosing.value = false
     } 
 
     function updateState() {
-        question.value = getNextQuestion(workingOnPokemons.value)
-        if (workingOnPokemons.value.length === 1) {
+        let nextQuestion = getNextQuestion(workingOnPokemons.value)
+        if (nextQuestion !== null) question.value = nextQuestion
+
+        if (nextQuestion === null || workingOnPokemons.value.length === 1) {
             allFalse()
             isGuessing.value = true            
         }
@@ -61,14 +61,6 @@
     }
 
     let pokemonFiltres = computed(() => workingOnPokemons.value);
-
-    function prev() {
-        return 0;
-    }
-
-    function next() {
-      this.moveLeft()
-    }
 
 </script>
 
@@ -94,7 +86,6 @@
                 </div>
             </div>
         </div>
-
         <div :class="{hidden: !isAsking}">
             <Personnage :question="question"
                 @oui="updateData('oui', question, workingOnPokemons, impossiblePokemons), updateState()"
@@ -111,7 +102,7 @@
             <Guesser :pokemons="workingOnPokemons" :replay="replay"/>
         </div>
         <div :class="{hidden: !isLoosing}">
-            
+
         </div>
     </main>
 </template>
@@ -128,7 +119,6 @@
     main > div:first-child > div {
         display: flex;
         align-items: center;
-
     }
     
     #text {

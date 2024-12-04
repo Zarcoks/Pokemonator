@@ -5,6 +5,7 @@ import Guesser from '../components/Guesser.vue';
 import Vue from '../App.vue'
 import App from '../App.vue';
 import { ref } from "vue";
+import { listPokemon } from "./listPokemon";
 
 interface Categorie {
     categorie: string,
@@ -49,8 +50,16 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
             })
             // Le nombre de pok vaut i :
             let sc = calculateScore(possiblePokeList, i)
-            
-            if (sc < meilleureSolution.score) {
+            if (sc == meilleureSolution.score){
+                let hasar = Math.round(Math.random())
+                if (hasar == 1){
+                    meilleureSolution.score = sc
+                    meilleureSolution.categorie.categorie = cat.categorie
+                    meilleureSolution.attribut = att
+                    meilleureSolution.categorie.q = cat.q
+                }
+            }
+            else if (sc < meilleureSolution.score) {
                 meilleureSolution.score = sc
                 meilleureSolution.categorie.categorie = cat.categorie
                 meilleureSolution.attribut = att
@@ -60,7 +69,6 @@ function getCategorieAndAttributeForQuestion(possiblePokeList:Pokemon[]) {
         });  
     });
 
-    // TODO: améliorer l'algo
     return meilleureSolution
 }
 
@@ -85,11 +93,14 @@ function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
  * Retourne un string qui contient la question à poser.
  * @param possiblePokeList 
  */
-export function getNextQuestion(possiblePokeList:Pokemon[]) {
+export function getNextQuestion(possiblePokeList:Pokemon[],isGuessing: boolean) {
+
     let attributs = getCategorieAndAttributeForQuestion(possiblePokeList)
     //console.log(attributs)
     buildQuestion(attributs)
+    if (attributs.score === possiblePokeList.length/2) return null;
     return attributs
+
 }
 
 function exclusPokemon(pokemonElimines: Pokemon[], pokeList1: Pokemon[], pokeList2: Pokemon[]) {
@@ -126,22 +137,6 @@ export function updateData(answer: string, question:CategorieAttribut, possibleP
         // Encore autre chose
     }
     exclusPokemon(pokemonElimines, possiblePokemon, impossiblePokemon)
-}
-
-export function ask_or_guess(listePokemon:Pokemon[]){
-    //console.log(listePokemon.length)
-    if (listePokemon.length ===1){
-        Vue.isGuessing = true;
-        //console.log("je pense à" + listePokemon)
-    }
-    else if (listePokemon.length < 1){
-        return "error"
-        //console.log("Je n'ai pas reussi à trouver ton pokémon");
-    }
-    else{
-        return "ask"
-        //getNextQuestion(listePokemon);
-    }
 }
 
 function guessPokemon(listePokemon:Pokemon[]){
