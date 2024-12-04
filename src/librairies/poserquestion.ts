@@ -93,7 +93,7 @@ function buildQuestion(categorieAttributQuestion:CategorieAttribut) {
  * Retourne un string qui contient la question à poser.
  * @param possiblePokeList 
  */
-export function getNextQuestion(possiblePokeList:Pokemon[],isGuessing: boolean) {
+export function getNextQuestion(possiblePokeList:Pokemon[]) {
 
     let attributs = getCategorieAndAttributeForQuestion(possiblePokeList)
     //console.log(attributs)
