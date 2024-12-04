@@ -78,16 +78,16 @@
                       <div class="inner" :style="{ width: `${(pokemons.length + 3) * 110}px` }">
 
                         <!-- la liste normal-->
-                        <article v-for="pok in pokemons" :key="pok.id" >
+                        <article v-for="pok in pokemons" :key="pok.nom" >
                           <div class="base">
-                            <img :src="pok.image" alt="pik"/>
+                            <img :src="pok.image" alt=""/>
                           </div>
                         </article>
 
                         <!-- Dupliquer les premiers éléments à la fin -->
-                        <article v-for="pok in pokemons.slice(0, 3)" :key="'clone-end-' + pok.id">
+                        <article v-for="pok in pokemons.slice(0, 5)" :key="'clone-end-' + pok.nom">
                           <div class="base">
-                            <img :src="pok.image" alt="Pokémon" />
+                            <img :src="pok.image" alt="" />
                           </div>
                         </article>
                       </div>
@@ -164,17 +164,18 @@
     }
 
      .carousel {
-       margin-top: 100px;
+       margin-top: 50px;
        padding: 10px;
        overflow: hidden;
        width: 400px;
-       height: 200px;
+       border: solid 1px;
+       border-radius: 10px;
      }
 
     .inner {
       display: flex;
       flex-direction: row;
-      animation: scrollCarousel 75s linear infinite;
+      animation: scrollCarousel 200s linear infinite;
     }
 
     article{
