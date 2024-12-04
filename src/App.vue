@@ -85,7 +85,7 @@
                         </article>
 
                         <!-- Dupliquer les premiers éléments à la fin -->
-                        <article v-for="pok in pokemons.slice(0, 3)" :key="'clone-end-' + pok.id">
+                        <article v-for="pok in pokemons.slice(0, 3gi)" :key="'clone-end-' + pok.id">
                           <div class="base">
                             <img :src="pok.image" alt="Pokémon" />
                           </div>
