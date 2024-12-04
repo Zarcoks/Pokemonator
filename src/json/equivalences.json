@@ -7,7 +7,7 @@
         "Espece": "forme"
     },
     "Attributes": {
-        "normal": "Nnormal",
+        "normal": "Normal",
         "combat": "Combat",
         "vol": "Vol",
         "poison": "Poison",
