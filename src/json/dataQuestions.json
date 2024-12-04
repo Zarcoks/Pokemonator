@@ -50,7 +50,7 @@
     },
     {
       "categorie": "TypeEvolution",
-      "q": "Pour évoluer, ton Pokémon a-t-il besoin ",
+      "q": "Pour être évoluer, ton Pokémon a-t-il besoin ",
       "p": 1,
       "attr" : ["de montée de niveau","d'être échangé","d'utiliser d'un objet"]
     }
