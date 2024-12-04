@@ -75,10 +75,19 @@
                     <p>Pensez à un pokemon, et quand vous êtes prêt, appuyez sur 'commencer' !</p>
                     <button @click="start">Commencer !</button>
                     <div class="carousel">
-                      <div class="inner" :style="{ width: `${pokemons.length * 110}px` }">
+                      <div class="inner" :style="{ width: `${(pokemons.length + 3) * 110}px` }">
+
+                        <!-- la liste normal-->
                         <article v-for="pok in pokemons" :key="pok.id" >
                           <div class="base">
                             <img :src="pok.image" alt="pik"/>
+                          </div>
+                        </article>
+
+                        <!-- Dupliquer les premiers éléments à la fin -->
+                        <article v-for="pok in pokemons.slice(0, 3)" :key="'clone-end-' + pok.id">
+                          <div class="base">
+                            <img :src="pok.image" alt="Pokémon" />
                           </div>
                         </article>
                       </div>
@@ -165,7 +174,7 @@
     .inner {
       display: flex;
       flex-direction: row;
-      animation: scrollCarousel 200s linear infinite;
+      animation: scrollCarousel 75s linear infinite;
     }
 
     article{
