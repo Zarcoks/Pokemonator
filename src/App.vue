@@ -2,24 +2,22 @@
     import toolbar from './components/Toolbar.vue';
     import Personnage from './components/Personnage.vue';
     import LivePokemons from './components/LivePokemons.vue';
-    import { computed, ref } from 'vue';
-    import {getPokemon, Pokemon} from "@/librairies/api"
+    import { ref } from 'vue';
+    import {type Pokemon} from "@/librairies/api"
     import pokemons from "@/json/pokemons.json"
     import { getNextQuestion, updateData } from './librairies/poserquestion';
     import Guesser from './components/Guesser.vue';
-    import { listPokemon } from './librairies/listPokemon';
 
     let imgProfesseur = ref(new URL('./assets/chen-akinator.png', import.meta.url).href)
 
     let workingOnPokemons = ref([...pokemons]) // La liste de tous les pokemons à modifier
     let impossiblePokemons = ref(new Array<Pokemon>()) // La liste des pokemons éliminés par les questions
     let question = ref(getNextQuestion(workingOnPokemons.value)); // La question loadé dynamiquement
-
+    
     // Variables d'état, pour déterminer quel composant est à afficher (une seule à la fois)
     let isNotStarted = ref(true)
     let isGuessing = ref(false)
     let isAsking = ref(false)
-    let isLoosing = ref(false)
 
     function start() {
         allFalse()
@@ -41,7 +39,7 @@
     function updateState() {
         let nextQuestion = getNextQuestion(workingOnPokemons.value)
         if (nextQuestion !== null) question.value = nextQuestion
-
+        
         if (nextQuestion === null || workingOnPokemons.value.length === 1) {
             allFalse()
             isGuessing.value = true            
@@ -50,18 +48,11 @@
             allFalse()
             isNotStarted.value = true
         }
-        else if (workingOnPokemons.value.length < 1){
-            allFalse()
-            isLoosing.value = true
-        }
         else if (workingOnPokemons.value.length > 1) {
             allFalse()
             isAsking.value = true;            
         }
     }
-
-    let pokemonFiltres = computed(() => workingOnPokemons.value);
-
 </script>
 
 <template>
@@ -71,8 +62,8 @@
             <div>
                 <img :src="imgProfesseur" alt="">
                 <div id="text">
-                    <h1>Bienvenue sur Pokemonator !</h1>
-                    <p>Pensez à un pokemon, et quand vous êtes prêt, appuyez sur 'commencer' !</p>
+                    <h1>Bienvenue sur Pokémonator !</h1>
+                    <p>Pensez à un pokémon, et quand vous êtes prêt, appuyez sur "commencer" !</p>
                     <button @click="start">Commencer !</button>
                     <div class="carousel">
                       <div class="inner" :style="{ width: `${(pokemons.length + 3) * 110}px` }">
