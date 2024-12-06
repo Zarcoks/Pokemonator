@@ -164,7 +164,7 @@
        margin-top: 50px;
        padding: 10px;
        overflow: hidden;
-       width: 30vw;
+       width: 40vw;
        border: solid 1px;
        border-radius: 10px;
      }
