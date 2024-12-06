@@ -72,11 +72,11 @@ props.pokemons.forEach(pokemon => {
     }
 
     h2 {
-      font-size: 1vw;
+      font-size: 1.5vw;
     }
 
     h5 {
-      font-size: 0.7vw;
+      font-size: 1vw;
     }
 
     #pokemons > div {
@@ -117,7 +117,7 @@ props.pokemons.forEach(pokemon => {
     }
 
     .base > span {
-      font-size: 0.8vw;
+      font-size: 1.1vw;
     }
 
     .hidden {
@@ -132,7 +132,7 @@ props.pokemons.forEach(pokemon => {
     .infos > span {
       display: block;
       padding: 5px;
-      font-size: 0.7vw;
+      font-size: 1vw;
     }
 
     article:hover {
@@ -141,5 +141,33 @@ props.pokemons.forEach(pokemon => {
 
     .grised {
         background-color: rgb(105, 105, 105);
+    }
+
+    /* On screens that are 600px or less, set the background color to olive */
+    @media screen and (max-width: 1000px) {
+        #pokemons {
+          margin-bottom: 50px;
+        }
+
+        #pokemons > div {
+            width: 60vw;
+            height: 30vh;
+        }
+
+        h2 {
+            font-size: large;
+        }
+
+        .base > span {
+          font-size: small;
+        }
+
+        .infos > span {
+          font-size: small;
+        }
+
+        h5 {
+          font-size: small;
+        }
     }
 </style>

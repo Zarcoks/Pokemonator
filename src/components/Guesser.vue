@@ -96,4 +96,19 @@ function replay() {
     .hidden {
       display: none;
     }
+
+    @media screen and (max-width: 1000px) {
+      h1 {
+        font-size: large;
+      }
+
+      #whole > button {
+        font-size: large;
+      }
+
+      #guessingPokemon img {
+        width: 40vw;
+        height: 40vw;
+      }
+    }
 </style>

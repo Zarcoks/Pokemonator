@@ -29,4 +29,14 @@
         font-family: 'Pokemon Solid', sans-serif;
         font-size: 2vw;
     }
+
+    @media screen and (max-width: 1000px) {
+        header {
+            height: 150px;
+        }
+
+        a {
+            font-size: xx-large;
+        }
+    }
 </style>

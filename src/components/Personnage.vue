@@ -70,4 +70,23 @@
         justify-content: center;
         align-items: center;
     }
+
+    @media screen and (max-width: 1000px) {
+        img {
+            width: 30vw;
+        }
+
+        #question > p {
+            font-size: small;
+        }
+
+        #buttons{
+            width: 20vw;
+        }
+
+        #buttons > button {
+            font-size: small;
+            width: 50px;
+        }
+    }
 </style>

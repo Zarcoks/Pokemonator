@@ -60,7 +60,7 @@
     <main>
         <div :class="{hidden: !isNotStarted}">
             <div>
-                <img :src="imgProfesseur" alt="">
+                <img :src="imgProfesseur" id="accueilProf" alt="">
                 <div id="text">
                     <h1>Bienvenue sur Pokémonator !</h1>
                     <p>Pensez à un pokémon, et quand vous êtes prêt, appuyez sur "commencer" !</p>
@@ -155,6 +155,22 @@
         main {
             flex-direction: column;
         }
+
+        #accueilProf {
+          display: none;
+        }
+
+        #text > h1 {
+          font-size: x-large;
+        }
+
+        p {
+          font-size: small;
+        }
+      
+        button {
+          font-size: small;
+        }
     }
 
      .carousel {
@@ -186,7 +202,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-100% + 400px));
+        transform: translateX(calc(-100% + 40vw));
       }
     }
 </style>

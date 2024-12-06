@@ -38,4 +38,23 @@ const props = defineProps<{callback: Function, src: string, message: string}>();
  button {
    font-size: 1vw;
  }
+
+ @media screen and (max-width: 1000px) {
+    img {
+      width: 50vw;
+      height: auto;
+    }
+
+    h1 {
+      font-size: larger;
+    }
+
+    h3 {
+      font-size: small;
+    }
+
+    button {
+      font-size: larger;
+    }
+ }
 </style>
