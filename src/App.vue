@@ -131,7 +131,7 @@
     }
 
     p, button {
-      font-size: 0.8vw;
+      font-size: 1vw;
     }
 
     .hidden {
