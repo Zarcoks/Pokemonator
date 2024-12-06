@@ -175,8 +175,8 @@
     }
 
     article{
-      width: 100px;
-      height: 100px;
+      width: 10vw;
+      height: 10vw;
       margin-right: 10px;
       display : flex;
       align-items: center;
