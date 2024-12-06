@@ -101,9 +101,6 @@
         <div :class="{hidden: !isGuessing}">
             <Guesser :pokemons="workingOnPokemons" :replay="replay"/>
         </div>
-        <div :class="{hidden: !isLoosing}">
-
-        </div>
     </main>
 </template>
 
@@ -134,7 +131,7 @@
     }
 
     p, button {
-      font-size: 1.5vw;
+      font-size: 0.8vw;
     }
 
     .hidden {
