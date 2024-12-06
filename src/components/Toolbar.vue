@@ -17,7 +17,7 @@
         align-items: center;
         justify-content: center;
         background-color: rgba(0, 0, 0, 0.8);
-        height: 80px;
+        height: 10vh;
     }
 
     a {
@@ -27,6 +27,6 @@
         border-radius: 10px;
         color: white;
         font-family: 'Pokemon Solid', sans-serif;
-        font-size: x-large;
+        font-size: 2vw;
     }
 </style>

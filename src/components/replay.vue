@@ -26,4 +26,16 @@ const props = defineProps<{callback: Function, src: string, message: string}>();
     align-items: center;
     margin-top: 20px;
  }
+
+ h1 {
+   font-size: 2vw;
+ }
+
+ h3 {
+   font-size: 1vw;
+ }
+
+ button {
+   font-size: 1vw;
+ }
 </style>

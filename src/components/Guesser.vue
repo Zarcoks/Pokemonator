@@ -77,17 +77,20 @@ function replay() {
     }
 
     #whole > button {
-      width: 100px;
-      height: 100px;
+      width: 10vw;
+      height: 10vw;
+      font-size: 1vw;
     }
 
     h1 {
       text-align: center;
       font-family: 'Pokemon Solid', sans-serif;
+      font-size: 2vw;
     }
 
     img {
-      width: 400px;
+      width: 22vw;
+      height: 22vw;
     }
 
     .hidden {

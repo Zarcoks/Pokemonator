@@ -71,12 +71,20 @@ props.pokemons.forEach(pokemon => {
       align-items: center;
     }
 
+    h2 {
+      font-size: 1vw;
+    }
+
+    h5 {
+      font-size: 0.7vw;
+    }
+
     #pokemons > div {
         display: flex;
         flex-direction: column;
         overflow-y: scroll;
-        width: 300px;
-        height: 350px;
+        width: 20vw;
+        height: 30vh;
         background-color: lightgray;
         border-radius: 20px;
         border: solid 1px;
@@ -108,6 +116,10 @@ props.pokemons.forEach(pokemon => {
         width: 100%;
     }
 
+    .base > span {
+      font-size: 0.8vw;
+    }
+
     .hidden {
       display: none;
     }
@@ -120,6 +132,7 @@ props.pokemons.forEach(pokemon => {
     .infos > span {
       display: block;
       padding: 5px;
+      font-size: 0.7vw;
     }
 
     article:hover {
