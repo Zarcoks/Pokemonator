@@ -129,7 +129,12 @@
     }
 
     h1 {
-        text-align: center
+        text-align: center;
+        font-size: 3vw;
+    }
+
+    p, button {
+      font-size: 1.5vw;
     }
 
     .hidden {
@@ -142,7 +147,7 @@
     }
 
     .base > img {
-      width: 100px;
+      width: 10vw;
       height: auto;
       margin-bottom: 10px;
     }
@@ -159,7 +164,7 @@
        margin-top: 50px;
        padding: 10px;
        overflow: hidden;
-       width: 400px;
+       width: 30vw;
        border: solid 1px;
        border-radius: 10px;
      }
